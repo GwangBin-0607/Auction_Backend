@@ -7,5 +7,5 @@ app.listen(port,function(){
 });
 
 app.get('/',function(req,res){
-    res.send("Nginx startsssssswwwwwww`111111111");
+    res.send("Nginx startsssssswwwwwww`111111111aaa");
 });
