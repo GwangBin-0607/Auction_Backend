@@ -8,6 +8,9 @@
   },
   "author": "Gwangbin",
   "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
   "dependencies": {
     "express": "^4.16.3",
     "nginx": "^1.0.8",
