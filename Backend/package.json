@@ -1,20 +1,15 @@
 {
-  "name": "testbackend_test",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "testBackend",
+  "description": "Backend",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
   },
   "author": "Gwangbin",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^5.3.0"
-  },
   "dependencies": {
     "express": "^4.16.3",
-    "nginx": "^1.0.8",
-    "nodemon": "^2.0.19",
-    "uuid": "^3.2.1"
+    "nodemon": "^2.0.20"
   }
 }
