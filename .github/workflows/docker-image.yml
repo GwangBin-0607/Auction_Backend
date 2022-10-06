@@ -30,7 +30,7 @@ jobs:
           echo "hello" >> entry_test.sh
           echo export PORT=80 >> entry_test.sh
           echo 'envsubst '${PORT}' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> entry_test.sh
-          echo nginx -g 'daemon off;'
+          echo nginx -g 'daemon off;' >> entry_test.sh
       -
         name: docker-compose build
         run: docker-compose build
