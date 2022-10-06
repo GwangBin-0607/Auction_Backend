@@ -1,7 +1,7 @@
 FROM nginx
 
 # RUN rm /etc/nginx/conf.d/default.conf
-COPY entry_test.sh /
+COPY ./entry_test.sh /
 COPY nginx_default.conf /etc/nginx/
 # COPY nginx_default.conf /etc/nginx/nginx.conf
 # COPY nginx_default.conf /etc/nginx/conf.d/default.conf.template
