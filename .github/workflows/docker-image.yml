@@ -25,6 +25,13 @@ jobs:
         id: docker_build
         uses: actions/checkout@v3
       -
+        name: Create Shell File
+        run: |
+          echo "hello" >> entry_test.sh
+          echo export PORT=80 >> entry_test.sh
+          echo envsubst '${PORT}' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf >> entry_test.sh
+          echo nginx -g 'daemon off;'
+      -
         name: docker-compose build
         run: docker-compose build
       -
