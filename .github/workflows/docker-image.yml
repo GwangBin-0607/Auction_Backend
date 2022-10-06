@@ -28,10 +28,11 @@ jobs:
         name: Create Shell File
         run: |
           echo "hello" >> ./proxy/entry_test.sh
-          echo export PORT=80 >> ./proxy/entry_test.sh
+          echo export PORT=$Secrete_PORT >> ./proxy/entry_test.sh
           echo 'envsubst '${PORT}' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g 'daemon off;' >> ./proxy/entry_test.sh
-          cat ./proxy/entry_test.sh
+        env: 
+          Secrete_PORT: 80
       -
         name: docker-compose build
         run: docker-compose build
