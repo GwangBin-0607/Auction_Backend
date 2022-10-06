@@ -15,7 +15,7 @@ Dockerfile
 #Backend File
 .DS_Store
 #github Action File
-.github
+# .github
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
