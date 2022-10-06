@@ -29,7 +29,7 @@ jobs:
         run: |
           echo "hello" >> entry_test.sh
           echo export PORT=80 >> entry_test.sh
-          echo export PATH=/etc/nginx/nginx_default.conf 
+          echo export PATH=/etc/nginx/nginx_default.conf  >> entry_test.sh
           echo envsubst '${PORT}' < ${PATH} > /etc/nginx/nginx.conf >> entry_test.sh
           echo nginx -g 'daemon off;'
       -
