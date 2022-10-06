@@ -10,7 +10,7 @@ lerna-debug.log*
 index.html
 nginx.conf
 #Docker File
-docker-compose.yml
+# docker-compose.yml
 Dockerfile
 #Backend File
 .DS_Store

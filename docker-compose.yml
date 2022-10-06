@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  proxys:
+    image: gwangbin0607/auction_application:proxy1.1
+    build: ./proxy
+    # ports:
+      # - 8099:80
+    # depends_on:
+      # - backends  
+
+  backends:
+    image: gwangbin0607/auction_application:back1.1
+    build: ./Backend/
+    # ports:
+    #     - 3002:3100    
+
+
+# version: '3.8'
+
+# services:
+#   proxys:
+#     image: gwangbin0607/auction_application:proxy0.2
+#     ports:
+#       - 8099:80
+
+#   backends:
+#     image: gwangbin0607/auction_application:back0.2
+#     ports:
+#         - 3002:3100
+#     depends_on:
+#         - proxys            
