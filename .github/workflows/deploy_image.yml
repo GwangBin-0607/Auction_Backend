@@ -6,7 +6,7 @@ on:
 jobs:
   build-image:
     runs-on: ubuntu-latest
-    step:
+    steps:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -28,6 +28,7 @@ jobs:
         run: docker-compose build
       -
         name: docker-compose push
+        needs: docker-compose build
         run: docker-compose push
           
 
