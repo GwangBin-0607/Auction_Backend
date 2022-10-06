@@ -8,6 +8,6 @@ app.listen(port, function () {
 });
 
 app.get('/', function (req, res) {
-    var property = "Hello awdadada"
+    var property = "Hello awdadadaa"
     res.send(property);
 });
