@@ -7,4 +7,5 @@ COPY index.html /etc/nginx/html/index.html
 # CMD nginx
 # VOLUME /etc/nginx
 # VOLUME /usr/share/nginx/html
-CMD [ "nginx","-g","daemon off;" ]
+# ENTRYPOINT [ "./docker-entrypoint.sh" ]
+CMD ["nginx"," -g", "daemon off;" ]

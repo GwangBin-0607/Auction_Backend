@@ -4,10 +4,10 @@ services:
   proxys:
     image: gwangbin0607/auction_application:proxy_lastest
     build: ./proxy
-    # ports:
-      # - 8099:80
-    # depends_on:
-      # - backends  
+    ports:
+      - 8099:80
+    depends_on:
+      - backends  
 
   backends:
     image: gwangbin0607/auction_application:backend_lastest
