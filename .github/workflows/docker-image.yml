@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v3
       - 
         name: Connect ec2
-        uses: appleboy/ssh-action@main
+        uses: appleboy/ssh-action@master
         with:
           host: ec2-13-125-247-240.ap-northeast-2.compute.amazonaws.com
           username: ec2-user
