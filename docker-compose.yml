@@ -11,22 +11,4 @@ services:
 
   backends:
     image: gwangbin0607/auction_application:backend_lastest
-    build: ./Backend
-    # ports:
-    #     - 3002:3100    
-
-
-# version: '3.8'
-
-# services:
-#   proxys:
-#     image: gwangbin0607/auction_application:proxy0.2
-#     ports:
-#       - 8099:80
-
-#   backends:
-#     image: gwangbin0607/auction_application:back0.2
-#     ports:
-#         - 3002:3100
-#     depends_on:
-#         - proxys            
+    build: ./Backend        
