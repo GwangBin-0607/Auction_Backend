@@ -6,7 +6,7 @@ COPY nginx_default.conf /etc/nginx/
 # COPY nginx_default.conf /etc/nginx/nginx.conf
 # COPY nginx_default.conf /etc/nginx/conf.d/default.conf.template
 COPY index.html /etc/nginx/html/index.html
-RUN chown a+x ./entry_test.sh
+RUN chmod a+x ./entry_test.sh
 # CMD nginx
 # VOLUME /etc/nginx
 # VOLUME /usr/share/nginx/html
