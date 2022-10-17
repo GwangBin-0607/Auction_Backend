@@ -43,9 +43,6 @@ jobs:
     name: continous deploy
     runs-on: ubuntu-latest
     steps:
-      -
-        name: checkout
-        uses: actions/checkout@v3
       - 
         name: Connect ec2
         uses: appleboy/ssh-action@master
