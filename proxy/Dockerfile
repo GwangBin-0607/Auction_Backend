@@ -10,4 +10,5 @@ COPY index.html /etc/nginx/html/index.html
 # VOLUME /etc/nginx
 # VOLUME /usr/share/nginx/html
 ENTRYPOINT [ "./entry_test.sh" ]
+# ENTRYPOINT [ "nginx","-g" ,"daemon off;" ]
 # CMD ["nginx","-g", "daemon off;" ]

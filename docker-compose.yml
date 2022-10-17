@@ -11,7 +11,7 @@ services:
 
   backends:
     image: gwangbin0607/auction_application:backend_lastest
-    build: ./Backend/
+    build: ./Backend
     # ports:
     #     - 3002:3100    
 
