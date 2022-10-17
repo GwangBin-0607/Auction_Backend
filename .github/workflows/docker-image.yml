@@ -52,5 +52,5 @@ jobs:
           port: 22
           key: ${{secrets.REMOTE_SSH_KEY}}
           script:
-            "echo FINISH"
+            "docker-compose pull && docker-compose up -d"
       
