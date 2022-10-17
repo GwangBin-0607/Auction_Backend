@@ -17,7 +17,7 @@ function tt(Path,Handler){
 }
 
 app.get('/home', function (req, res) {
-    var property = "12312313Hello awdadadaawadwasdasdatestsdaaaadhelllloawdawdasasdsadadawdadadadadasdsdasdadsdaaa"
+    var property = "CD Complete"
     tt("gg",()=>{
         let t = new Test();
         t.hello();
