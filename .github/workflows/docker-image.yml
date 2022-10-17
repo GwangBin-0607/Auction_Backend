@@ -39,7 +39,7 @@ jobs:
         name: docker-compose push
         run: docker-compose push
   pull-run-image:
-    needs: build-image
+    needs: build-images
     name: continous deploy
     runs-on: ubuntu-latest
     steps:
