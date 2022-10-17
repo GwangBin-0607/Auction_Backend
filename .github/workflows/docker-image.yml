@@ -73,4 +73,7 @@ jobs:
           key: ${{secrets.REMOTE_SSH_KEY}}
           script:
             "docker-compose pull && docker-compose up -d --no-build"
+        env:
+          HOSTPORT: 8099
+          CONTAINERPORT: 80
       
