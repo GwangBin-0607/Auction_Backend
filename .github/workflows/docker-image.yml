@@ -36,6 +36,11 @@ jobs:
           NODEJSPORT: ${{secrets.NODEJSPORT}}
           NGINXPORT: ${{secrets.NGINXPORT}}
       -
+        name: Create .env file
+        run: echo PORT=$NODEJSPORT >> ./Backend/.env
+        env: 
+          NODEJSPORT: ${{secrets.NODEJSPORT}}
+      -
         name: docker-compose build
         run: docker-compose build
         env:
