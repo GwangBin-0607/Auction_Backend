@@ -26,7 +26,7 @@ jobs:
       -
         name: Create Shell File
         run: |
-          echo #!/bin/bash >> ./proxy/entry_test.sh
+          echo #!/usr/bin/env sh >> ./proxy/entry_test.sh
           echo "hellaao" >> ./proxy/entry_test.sh
           export NODEPORT=3100 >> ./proxy/entry_test.sh
           echo export PORT=$Secrete_PORT >> ./proxy/entry_test.sh
