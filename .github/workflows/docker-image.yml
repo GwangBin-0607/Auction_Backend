@@ -22,7 +22,6 @@ jobs:
           password: '!Qq61365377'
       -
         name: checkout
-        id: docker_build
         uses: actions/checkout@v3
       -
         name: Create Shell File
@@ -39,3 +38,20 @@ jobs:
       -
         name: docker-compose push
         run: docker-compose push
+  pull-run-image:
+    needs: build-image
+    name: continous deploy
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: checkout
+        uses: actions/checkout@v3
+      - 
+        name: Connect ec2
+        uses: appleboy/ssh-action@main
+        with:
+          host: ec2-13-125-247-240.ap-northeast-2.compute.amazonaws.com
+          username: ec2-user
+          port: 22
+          key: ${{secrets.REMOTE_SSH_KEY}}
+      
