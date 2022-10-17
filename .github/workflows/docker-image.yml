@@ -28,12 +28,13 @@ jobs:
         run: |
           echo '#!/bin/bash' >> ./proxy/entry_test.sh
           echo echo "hellaao" >> ./proxy/entry_test.sh
-          echo export NODEPORT=3100 >> ./proxy/entry_test.sh
-          echo export PORT=$Secrete_PORT >> ./proxy/entry_test.sh
+          echo export NODEPORT=$NODEJSPORT >> ./proxy/entry_test.sh
+          echo export PORT=$NGINXPORT >> ./proxy/entry_test.sh
           echo 'envsubst '\'\${PORT},\${NODEPORT}\'' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g "'daemon off;'" >> ./proxy/entry_test.sh
         env: 
-          Secrete_PORT: 80
+          NODEJSPORT: ${{secrets.NODEJSPORT}}
+          NGINXPORT: ${{secrets.NGINXPORT}}
       -
         name: docker-compose build
         run: docker-compose build
