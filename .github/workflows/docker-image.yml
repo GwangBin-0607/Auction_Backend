@@ -64,7 +64,7 @@ jobs:
           source: "docker-compose.yml"
           target: "/home/ec2-user/"
       - 
-        name: Connected ec2
+        name: Connected to ec2
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.REMOTE_HOST}}
