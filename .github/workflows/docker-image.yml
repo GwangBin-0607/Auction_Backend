@@ -39,14 +39,14 @@ jobs:
         name: docker-compose build
         run: docker-compose build
         env:
-          HOSTPORT: 8099
-          CONTAINERPORT: 80
+          HOSTPORT: ${{secrets.HOSTPORT}}
+          CONTAINERPORT: ${{secrets.CONTAINERPORT}}
       -
         name: docker-compose push
         run: docker-compose push
         env:
-          HOSTPORT: 8099
-          CONTAINERPORT: 80
+          HOSTPORT: ${{secrets.HOSTPORT}}
+          CONTAINERPORT: ${{secrets.CONTAINERPORT}}
   pull-run-image:
     needs: build-image
     name: continous deploy
