@@ -27,8 +27,8 @@ jobs:
         name: Create Shell File
         run: |
           echo '#!/bin/bash' >> ./proxy/entry_test.sh
-          echo "hellaao" >> ./proxy/entry_test.sh
-          export NODEPORT=3100 >> ./proxy/entry_test.sh
+          echo echo "hellaao" >> ./proxy/entry_test.sh
+          echo export NODEPORT=3100 >> ./proxy/entry_test.sh
           echo export PORT=$Secrete_PORT >> ./proxy/entry_test.sh
           echo 'envsubst '${PORT}' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g 'daemon off;' >> ./proxy/entry_test.sh
