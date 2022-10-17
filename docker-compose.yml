@@ -5,7 +5,7 @@ services:
     image: gwangbin0607/auction_application:proxy_lastest
     build: ./proxy
     ports:
-      - 8099:80
+      - $HOSTPORT:$CONTAINERPORT
     depends_on:
       - backends  
 
