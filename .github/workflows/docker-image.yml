@@ -39,12 +39,12 @@ jobs:
         name: docker-compose push
         run: docker-compose push
   pull-run-image:
-    needs: build-images
+    needs: build-image
     name: continous deploy
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Connect ec2
+        name: Connected ec2
         uses: appleboy/ssh-action@master
         with:
           host: ec2-13-125-247-240.ap-northeast-2.compute.amazonaws.com
