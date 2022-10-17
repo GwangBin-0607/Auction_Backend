@@ -24,7 +24,7 @@ jobs:
         name: checkout
         uses: actions/checkout@v3
       -
-        name: Create Shell Files
+        name: Create Shell File
         run: |
           echo '#!/bin/bash' >> ./proxy/entry_test.sh
           echo echo "hellaao" >> ./proxy/entry_test.sh
