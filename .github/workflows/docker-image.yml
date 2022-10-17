@@ -30,7 +30,7 @@ jobs:
           echo echo "hellaao" >> ./proxy/entry_test.sh
           echo export NODEPORT=3100 >> ./proxy/entry_test.sh
           echo export PORT=$Secrete_PORT >> ./proxy/entry_test.sh
-          echo 'envsubst '\${PORT},\${NODEPORT}' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
+          echo 'envsubst '\'\${PORT},\${NODEPORT}\'' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g "'daemon off;'" >> ./proxy/entry_test.sh
         env: 
           Secrete_PORT: 80
