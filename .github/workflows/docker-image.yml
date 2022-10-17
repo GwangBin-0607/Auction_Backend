@@ -30,6 +30,7 @@ jobs:
           echo export PORT=$Secrete_PORT >> ./proxy/entry_test.sh
           echo 'envsubst '${PORT}' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g 'daemon off;' >> ./proxy/entry_test.sh
+          ls -l
         env: 
           Secrete_PORT: 80
       -
