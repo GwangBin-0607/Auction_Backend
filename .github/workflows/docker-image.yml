@@ -51,4 +51,6 @@ jobs:
           username: ec2-user
           port: 22
           key: ${{secrets.REMOTE_SSH_KEY}}
+          script:
+            "echo FINISH"
       
