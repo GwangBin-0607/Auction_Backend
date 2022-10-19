@@ -40,6 +40,11 @@ jobs:
         run: echo PORT=$NODEJSPORT >> ./Backend/.env
         env: 
           NODEJSPORT: ${{secrets.NODEJSPORT}}
+          PROD_USERNAME: ${{secrets.PROD_USERNAME}}
+          PROD_PASSWORD: ${{secrets.PROD_PASSWORD}}
+          PROD_DATABASE: ${{secrets.PROD_DATABASE}}
+          PROD_HOST: ${{secrets.PROD_HOST}}
+          PROD_PORT: ${{secrets.PROD_PORT}}
       -
         name: docker-compose build
         run: docker-compose build
