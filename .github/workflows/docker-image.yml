@@ -60,7 +60,7 @@ jobs:
           CONTAINERPORT: ${{secrets.CONTAINERPORT}}
       -
         name: docker-compose push
-        run: docker-compose push
+        run: docker-compose -f docker-compose.prod.yml push
         env:
           HOSTPORT: ${{secrets.HOSTPORT}}
           CONTAINERPORT: ${{secrets.CONTAINERPORT}}
