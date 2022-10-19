@@ -37,7 +37,14 @@ jobs:
           NGINXPORT: ${{secrets.NGINXPORT}}
       -
         name: Create .env file
-        run: echo PORT=$NODEJSPORT >> ./Backend/.env
+        run: |
+          echo PORT=$NODEJSPORT >> ./Backend/.env
+          echo PORT=$PROD_USERNAME >> ./Backend/.env
+          echo PORT=$PROD_PASSWORD >> ./Backend/.env
+          echo PORT=$PROD_DATABASE >> ./Backend/.env
+          echo PORT=$PROD_HOST >> ./Backend/.env
+          echo PORT=$PROD_PORT >> ./Backend/.env
+        
         env: 
           NODEJSPORT: ${{secrets.NODEJSPORT}}
           PROD_USERNAME: ${{secrets.PROD_USERNAME}}
