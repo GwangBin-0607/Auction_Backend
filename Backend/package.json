@@ -4,7 +4,7 @@
   "description": "Backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && node index.js",
     "test": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && env NODE_ENV='development' nodemon index.js"
   },
   "author": "Gwangbin",
