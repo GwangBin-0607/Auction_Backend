@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(__dirname + '/../Database/config/config.js')[env];
 const db = {};
 
 let sequelize;
@@ -34,5 +34,15 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.users = require("./user.js")(sequelize, Sequelize.DataTypes);
+console.log("HELLO");
+sequelize
+  .sync({ force: false})
+  .then(() => {
+    console.log("데이터베이스 연결됨.");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
-module.exports = db;
+module.exports.db = db;

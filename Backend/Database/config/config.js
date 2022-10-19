@@ -1,10 +1,12 @@
-{
+require('dotenv').config();
+const env = process.env;
+module.exports = {
   "development": {
-    "username": "root",
-    "password": "q6136537",
-    "database": "Auction_Databasawdadeaaa",
-    "host": "127.0.0.1",
-    "port" : "5699",
+    "username": env.DEV_USERNAME,
+    "password": env.DEV_PASSWORD,
+    "database": env.DEV_DATABASE,
+    "host": env.DEV_HOST,
+    "port":env.DEV_PORT,
     "dialect": "mysql"
   },
   "test": {
