@@ -18,10 +18,10 @@ module.exports = {
   },
   "production": {
     "username": env.PROD_USERNAME,
-    "password": env.PROD_USERNAME,
-    "database": env.PROD_USERNAME,
-    "host": env.PROD_USERNAME,
-    "host": env.PROD_USERNAME,
+    "password": env.PROD_PASSWORD,
+    "database": env.PROD_DATABASE,
+    "host": env.PROD_HOST,
+    "port": env.PROD_PORT,
     "dialect": "mysql"
   }
 }
