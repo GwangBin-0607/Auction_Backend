@@ -78,7 +78,7 @@ jobs:
           username: ${{secrets.REMOTE_USERNAME}}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{secrets.REMOTE_PORT}}
-          source: "docker-compose.yml"
+          source: "docker-compose.prod.yml"
           target: "/home/ec2-user/"
       - 
         name: Connected to ec2
@@ -89,5 +89,5 @@ jobs:
           port: ${{secrets.REMOTE_PORT}}
           key: ${{secrets.REMOTE_SSH_KEY}}
           script:
-            "export HOSTPORT=${{secrets.HOSTPORT}} && export CONTAINERPORT=${{secrets.CONTAINERPORT}} && docker-compose pull && docker-compose up -d --no-build"
+            "export HOSTPORT=${{secrets.HOSTPORT}} && export CONTAINERPORT=${{secrets.CONTAINERPORT}} && docker-compose pull && docker-compose -f docker-compose.prod.yml up -d --no-build"
       
