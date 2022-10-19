@@ -54,7 +54,7 @@ jobs:
           PROD_PORT: ${{secrets.PROD_PORT}}
       -
         name: docker-compose build
-        run: docker-compose build
+        run: docker-compose -f docker-compose.prod.yml build
         env:
           HOSTPORT: ${{secrets.HOSTPORT}}
           CONTAINERPORT: ${{secrets.CONTAINERPORT}}
