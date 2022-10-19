@@ -26,7 +26,7 @@ app.get('/home', async function (req, res) {
         body:{
         firstName:"Hello",
         lastName:"1234",
-        email:"12312312"
+        email:"1231231a2"
     }
     };
     await addUser(user,"hello");
