@@ -11,4 +11,6 @@ services:
 
   backends:
     image: gwangbin0607/auction_application:backend_lastest
-    build: ./Backend        
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile.prod      
