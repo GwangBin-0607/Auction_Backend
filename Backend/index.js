@@ -18,6 +18,7 @@ const port = process.env.PORT;
 app.listen(port, function () {
     console.log(process.env.NODE_ENV)
     console.log("Express server has started on port : " + port);
+    console.log(process.env.UV_THREADPOOL_SIZE);
 });
 app.get('/home', async function (req, res) {
     var property = "CD Complete good THIRD!"
