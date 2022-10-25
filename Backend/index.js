@@ -18,18 +18,8 @@ const port = process.env.PORT;
 app.listen(port, function () {
     console.log(process.env.NODE_ENV)
     console.log("Express server has started on port : " + port);
-    console.log(process.env.UV_THREADPOOL_SIZE);
 });
 app.get('/home', async function (req, res) {
     var property = "CD Complete good THIRD!"
-
-    // const user = {
-    //     body:{
-    //     firstName:"Hello",
-    //     lastName:"1234",
-    //     email:"1231231a2"
-    // }
-    // };
-    // await addUser(user,"hello");
     res.send(property);
 });
