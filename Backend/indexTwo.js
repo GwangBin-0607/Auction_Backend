@@ -1,10 +1,10 @@
 const net = require('net');
 const ipaddr = "localhost";
-const port = 3100;
+const port = process.env.PORT;
 let clientArray=[];
 
 let server = net.createServer(function (socket) {
-	console.log(socket.address().port + " connected.");
+	console.log(socket.address() + " connected.");
 	socket.setEncoding('utf8');
     clientArray.push(socket)
     const json = {
