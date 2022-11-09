@@ -15,6 +15,7 @@ let server = net.createServer(function (socket) {
         "id" : "byeolgori502",
         "name" : "별고리"
     }`;
+    client.write("hello");
 	socket.on('data', function (data) {
         console.log("Connect Data!!")
 		console.log(data);
