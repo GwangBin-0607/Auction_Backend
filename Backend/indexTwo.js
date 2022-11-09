@@ -15,13 +15,13 @@ let server = net.createServer(function (socket) {
         "id" : "byeolgori502",
         "name" : "별고리"
     }`;
-    socket.write("hello");
+    // socket.write("hello");
 	socket.on('data', function (data) {
         console.log("Connect Data!!")
 		console.log(data);
-        // clientArray.forEach(client=>{
-        //     client.write("hello");
-        // });
+        clientArray.forEach(client=>{
+            client.write("hello");
+        });
 	});
 	socket.on('close', function () {
 		console.log('client disconnted.');
