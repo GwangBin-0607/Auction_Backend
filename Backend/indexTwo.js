@@ -1,5 +1,5 @@
 const net = require('net');
-const ipaddr = "localhost";
+require('dotenv').config();//이거 안해주니깐 못붙지 에러나고 nginx tcp upstream failed (111: Connection refused) while connecting to upstream
 const port = process.env.PORT;
 let clientArray=[];
 
@@ -33,10 +33,11 @@ let server = net.createServer(function (socket) {
 
 // print error message
 server.on('error', function (err) {
-	console.log('err: ', err.code);
+    
+	console.log('err: ', err);
 });
 
 // listening
-server.listen(port, ipaddr, function () {
-	console.log('listening on 2031..');
+server.listen(port, function () {
+	console.log('listening on'+port);
 });
