@@ -1,6 +1,6 @@
 const net = require('net');
 require('dotenv').config();//이거 안해주니깐 못붙지 에러나고 nginx tcp upstream failed (111: Connection refused) while connecting to upstream
-const port = process.env.PORT;
+const port = process.env.TCPPORT;
 let clientArray=[];
 
 let server = net.createServer(function (socket) {
