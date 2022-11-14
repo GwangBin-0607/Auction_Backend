@@ -27,7 +27,7 @@ let server = net.createServer(function (socket) {
 		console.log('client disconnted.');
 	});
 	setTimeout(() => {
-		socket.write('welcome to server!!!!123!aasdasd!!!');
+		socket.write('w111111elcome to server!!!!123!aasdasd!!!');
 	}, 500);
 });
 
