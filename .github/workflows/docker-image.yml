@@ -36,14 +36,15 @@ jobs:
           NODEJSPORT: ${{secrets.NODEJSPORT}}
           NGINXPORT: ${{secrets.NGINXPORT}}
       -
-        name: Create .env file
+        name: Create .env file http
         run: |
-          echo PORT=$NODEJSPORT >> ./Backend/.env
-          echo PROD_USERNAME=$PROD_USERNAME >> ./Backend/.env
-          echo PROD_PASSWORD=$PROD_PASSWORD >> ./Backend/.env
-          echo PROD_DATABASE=$PROD_DATABASE >> ./Backend/.env
-          echo PROD_HOST=$PROD_HOST >> ./Backend/.env
-          echo PROD_PORT=$PROD_PORT >> ./Backend/.env
+          echo PORT=$NODEJSPORT >> ./Backend/http/.env
+          echo PROD_USERNAME=$PROD_USERNAME >> ./Backend/http/.env
+          echo PROD_PASSWORD=$PROD_PASSWORD >> ./Backend/http/.env
+          echo PROD_DATABASE=$PROD_DATABASE >> ./Backend/http/.env
+          echo PROD_HOST=$PROD_HOST >> ./Backend/http/.env
+          echo PROD_PORT=$PROD_PORT >> ./Backend/http/.env
+          cp ./Backend/http/.env ./Backend/tcp
         
         env: 
           NODEJSPORT: ${{secrets.NODEJSPORT}}
