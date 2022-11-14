@@ -42,7 +42,7 @@ jobs:
       -
         name: Create .env file http
         run: |
-          echo TCPPORT=$NODEJSPORT >> ./Backend/http/.env
+          echo TCPPORT=$TCPNODEJSPORT >> ./Backend/http/.env
           echo PORT=$NODEJSPORT >> ./Backend/http/.env
           echo PROD_USERNAME=$PROD_USERNAME >> ./Backend/http/.env
           echo PROD_PASSWORD=$PROD_PASSWORD >> ./Backend/http/.env
