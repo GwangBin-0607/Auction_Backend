@@ -63,12 +63,16 @@ jobs:
         env:
           HOSTPORT: ${{secrets.HOSTPORT}}
           CONTAINERPORT: ${{secrets.CONTAINERPORT}}
+          TCPHOSTPORT: ${{secrets.TCPHOSTPORT}}
+          TCPCONTAINERPORT: ${{secrets.TCPCONTAINERPORT}}
       -
         name: docker-compose push
         run: docker-compose -f docker-compose.prod.yml push
         env:
           HOSTPORT: ${{secrets.HOSTPORT}}
           CONTAINERPORT: ${{secrets.CONTAINERPORT}}
+          TCPHOSTPORT: ${{secrets.TCPHOSTPORT}}
+          TCPCONTAINERPORT: ${{secrets.TCPCONTAINERPORT}}
   pull-run-image:
     needs: build-image
     name: continous deploy
