@@ -42,6 +42,7 @@ jobs:
       -
         name: Create .env file http
         run: |
+          echo TCPPORT=$NODEJSPORT >> ./Backend/http/.env
           echo PORT=$NODEJSPORT >> ./Backend/http/.env
           echo PROD_USERNAME=$PROD_USERNAME >> ./Backend/http/.env
           echo PROD_PASSWORD=$PROD_PASSWORD >> ./Backend/http/.env
@@ -50,7 +51,8 @@ jobs:
           echo PROD_PORT=$PROD_PORT >> ./Backend/http/.env
           cp ./Backend/http/.env ./Backend/tcp
         
-        env: 
+        env:
+          TCPNODEJSPORT: ${{secrets.TCPNODEJSPORT}}
           NODEJSPORT: ${{secrets.NODEJSPORT}}
           PROD_USERNAME: ${{secrets.PROD_USERNAME}}
           PROD_PASSWORD: ${{secrets.PROD_PASSWORD}}
