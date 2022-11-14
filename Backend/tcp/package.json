@@ -1,20 +1,19 @@
 {
-  "name": "backend",
+  "name": "tcp",
   "version": "1.0.0",
-  "description": "Backend",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "npx sequelize-cli db:create && npx sequelize-cli db:migrate && node indexTwo.js",
-    "test": "npx sequelize-cli db:create --env 'development' && npx sequelize-cli db:migrate --env 'development' && env NODE_ENV='development' nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Gwangbin",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.20"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
-    "express": "^4.16.3",
     "mysql2": "^2.3.3",
     "sequelize": "^6.23.2",
     "sequelize-cli": "^6.5.1"

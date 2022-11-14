@@ -9,8 +9,14 @@ services:
     depends_on:
       - backends  
 
-  backends:
-    image: gwangbin0607/auction_application:backend_lastest
-    build: 
-      context: ./Backend
-      dockerfile: Dockerfile.prod      
+  http:
+    image: gwangbin0607/auction_application:http_lastest
+    build:
+      context: ./Backend/http
+      dockerfile: Dockerfile.dev
+
+  tcp:
+    image: gwangbin0607/auction_application:tcp_lastest
+    build:
+      context: ./Backend/tcp
+      dockerfile: Dockerfile 
