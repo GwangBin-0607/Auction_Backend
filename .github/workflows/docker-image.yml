@@ -28,13 +28,17 @@ jobs:
         run: |
           echo '#!/bin/bash' >> ./proxy/entry_test.sh
           echo echo "hellaao" >> ./proxy/entry_test.sh
-          echo export NODEPORT=$NODEJSPORT >> ./proxy/entry_test.sh
-          echo export PORT=$NGINXPORT >> ./proxy/entry_test.sh
-          echo 'envsubst '\'\${PORT},\${NODEPORT}\'' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
+          echo export HTTPNODEPORT=$NODEJSPORT >> ./proxy/entry_test.sh
+          echo export HTTPPORT=$NGINXPORT >> ./proxy/entry_test.sh
+          echo export TCPNODEPORT=$TCPNODEJSPORT >> ./proxy/entry_test.sh
+          echo export TCPPORT=$TCPNGINXPORT >> ./proxy/entry_test.sh
+          echo 'envsubst '\'\${PORT},\${NODEPORT},\${TCPNODEPORT},\${TCPPORT}\'' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g "'daemon off;'" >> ./proxy/entry_test.sh
         env: 
           NODEJSPORT: ${{secrets.NODEJSPORT}}
           NGINXPORT: ${{secrets.NGINXPORT}}
+          TCPNODEJSPORT: ${{secrets.TCPNODEJSPORT}}
+          TCPNGINXPORT: ${{secrets.TCPNGINXPORT}}
       -
         name: Create .env file http
         run: |
@@ -90,5 +94,5 @@ jobs:
           port: ${{secrets.REMOTE_PORT}}
           key: ${{secrets.REMOTE_SSH_KEY}}
           script:
-            "export HOSTPORT=${{secrets.HOSTPORT}} && export CONTAINERPORT=${{secrets.CONTAINERPORT}} && docker-compose -f docker-compose.prod.yml pull && docker-compose -f docker-compose.prod.yml up -d --no-build --remove-orphans"
+            "export HOSTPORT=${{secrets.HOSTPORT}} && export CONTAINERPORT=${{secrets.CONTAINERPORT}} && export TCPHOSTPORT=${{secrets.TCPHOSTPORT}} && export TCPCONTAINERPORT=${{secrets.TCPCONTAINERPORT}} && docker-compose -f docker-compose.prod.yml pull && docker-compose -f docker-compose.prod.yml up -d --no-build --remove-orphans"
       
