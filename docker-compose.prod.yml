@@ -14,7 +14,7 @@ services:
     image: gwangbin0607/auction_application:http_lastest
     build:
       context: ./Backend/http
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
 
   tcp:
     image: gwangbin0607/auction_application:tcp_lastest
