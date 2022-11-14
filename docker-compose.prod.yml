@@ -7,7 +7,8 @@ services:
     ports:
       - $HOSTPORT:$CONTAINERPORT
     depends_on:
-      - backends  
+      - http
+      - tcp 
 
   http:
     image: gwangbin0607/auction_application:http_lastest
