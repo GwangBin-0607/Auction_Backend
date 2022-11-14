@@ -32,7 +32,7 @@ jobs:
           echo export HTTPPORT=$NGINXPORT >> ./proxy/entry_test.sh
           echo export TCPNODEPORT=$TCPNODEJSPORT >> ./proxy/entry_test.sh
           echo export TCPPORT=$TCPNGINXPORT >> ./proxy/entry_test.sh
-          echo 'envsubst '\'\${PORT},\${NODEPORT},\${TCPNODEPORT},\${TCPPORT}\'' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
+          echo 'envsubst '\'\${HTTPPORT},\${HTTPNODEPORT},\${TCPNODEPORT},\${TCPPORT}\'' < /etc/nginx/nginx_default.conf > /etc/nginx/nginx.conf' >> ./proxy/entry_test.sh
           echo nginx -g "'daemon off;'" >> ./proxy/entry_test.sh
         env: 
           NODEJSPORT: ${{secrets.NODEJSPORT}}
