@@ -20,4 +20,4 @@ services:
     image: gwangbin0607/auction_application:tcp_lastest
     build:
       context: ./Backend/tcp
-      dockerfile: Dockerfile 
+      dockerfile: Dockerfile
