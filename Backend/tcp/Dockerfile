@@ -99,7 +99,7 @@ ADD ./ /app
 
 RUN npm ci --production
 
-ENV NODE_ENV=development
+ENV NODE_ENV=production
 
 CMD npm start
 
