@@ -6,6 +6,7 @@ services:
     build: ./proxy
     ports:
       - $HOSTPORT:$CONTAINERPORT
+      - $TCPHOSTPORT:$TCPCONTAINERPORT
     depends_on:
       - http
       - tcp   
@@ -20,5 +21,4 @@ services:
     image: gwangbin0607/auction_application:tcp_lastest
     build:
       context: ./Backend/tcp
-      dockerfile: Dockerfile
-      
+      dockerfile: Dockerfile.prod
