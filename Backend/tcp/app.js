@@ -3,18 +3,18 @@ require('dotenv').config();
 const port = process.env.TCPPORT;
 let clientArray=[];
 
-const db=require('./Database/models');
-const User = db.product_images;
+// const db=require('./Database/models');
+// const User = db.product_images;
 
-const addUser = async () => {
-    let info = {
-        image_url:"222",
-        product_id:2
-    };
+// const addUser = async () => {
+//     let info = {
+//         image_url:"222",
+//         product_id:2
+//     };
   
-    const user = await User.create(info).catch((err) => console.log(err));
-    console.log(JSON.stringify(user));
-  };
+//     const user = await User.create(info).catch((err) => console.log(err));
+//     console.log(JSON.stringify(user));
+//   };
 //   const list = async ()=>{
 //     const result = await db.products.findAll({
 //         include:
@@ -25,14 +25,14 @@ const addUser = async () => {
 //     console.log(result);
 //     return result
 //   }
-const list = async ()=>{
-    const result = await db.products.findAll({
-        raw:true,
-        attributes:[['product_id','id'],['product_price','price']]
-    }).catch((err) => console.log(err));
-    console.log(result);
-    return result
-  }
+// const list = async ()=>{
+//     const result = await db.products.findAll({
+//         raw:true,
+//         attributes:[['product_id','id'],['product_price','price']]
+//     }).catch((err) => console.log(err));
+//     console.log(result);
+//     return result
+//   }
 
 let server = net.createServer(function  (socket) {
 	console.log(socket.address() + " connected.");
@@ -54,7 +54,7 @@ let server = net.createServer(function  (socket) {
         clientArray.forEach(async client=>{
             let result = await list();
             console.log(result);
-            client.write(JSON.stringify(result));
+            // client.write(JSON.stringify(result));
         });
 	});
 	socket.on('close', function () {
