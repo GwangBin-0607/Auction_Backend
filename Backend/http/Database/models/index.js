@@ -28,21 +28,19 @@ fs
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
+    console.log(db[modelName]);
     db[modelName].associate(db);
   }
 });
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-db.users = require("./user.js")(sequelize, Sequelize.DataTypes);
+db.products = db['Product'];
+db.product_images = db['Product_Images'];
 console.log("HELLO");
-sequelize
-  .sync({ force: false})
-  .then(() => {
-    console.log("데이터베이스 연결됨.");
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-module.exports.db = db;
+// sequelize
+//   .sync({ force: false})
+//   .then(() => {
+//     console.log("데이터베이스 연결됨.");
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+module.exports = db;
