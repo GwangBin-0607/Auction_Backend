@@ -51,7 +51,7 @@ let server = net.createServer(function  (socket) {
         console.log("Connect Data!!!!!Second!!")
 		console.log(data);
         console.log(JSON.parse(data).id);
-        clientArray.forEach(async client=>{
+        clientArray.forEach(client=>{
             // let result = await list();
             client.write(JSON.stringify(json));
             // client.write(JSON.stringify(result));
