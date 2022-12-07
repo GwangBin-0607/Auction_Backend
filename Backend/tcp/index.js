@@ -7,27 +7,27 @@ let server = net.createServer(function (socket) {
 	console.log(socket.address() + " connected.");
 	socket.setEncoding('utf8');
     clientArray.push(socket)
-    const json = {
-        id : 100,
-        name :"안광빈"
-    }
+    const json = [{
+        ida : 100,
+        price :123123
+    }]
     let jsonTwo = `{
-        "id" : "byeolgori502",
-        "name" : "별고리"
+        "id" : 1,
+        "price" : 1000
     }`;
     // socket.write("hello");
 	socket.on('data', function (data) {
         console.log("Connect Data!!")
 		console.log(data);
         clientArray.forEach(client=>{
-            client.write("hello");
+            client.write(JSON.stringify(json));
         });
 	});
 	socket.on('close', function () {
 		console.log('client disconnted.');
 	});
 	setTimeout(() => {
-		socket.write('w111111elcome to server!!!!123!aasdasd!!!');
+		// socket.write('w111111elcome to server!!!!123!aasdasd!!!');
 	}, 500);
 });
 
