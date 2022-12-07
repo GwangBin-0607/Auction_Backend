@@ -48,7 +48,7 @@ let server = net.createServer(function  (socket) {
     }`;
     // socket.write("hello");
 	socket.on('data', function(data) {
-        console.log("Connect Data!!")
+        console.log("Connect Data!!!!!Second!!")
 		console.log(data);
         console.log(JSON.parse(data).id);
         clientArray.forEach(async client=>{
