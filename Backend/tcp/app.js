@@ -20,7 +20,7 @@ const User = db.products;
 
 const addUser = async () => {
     let info = {
-        image_url:"2222",
+        product_name:"2222",
         product_id:2
     };
   
