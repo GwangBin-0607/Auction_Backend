@@ -14,11 +14,11 @@ services:
   http:
     image: gwangbin0607/auction_application:http_lastest
     build:
-      context: ./Backend
-      dockerfile: ./http/Dockerfile.prod
+      context: ./Backend/http
+      dockerfile: Dockerfile.prod
 
   tcp:
     image: gwangbin0607/auction_application:tcp_lastest
     build:
-      context: ./Backend
-      dockerfile: ./tcp/Dockerfile.prod
+      context: ./Backend/tcp
+      dockerfile: Dockerfile.prod
