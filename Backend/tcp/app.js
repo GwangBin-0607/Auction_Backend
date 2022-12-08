@@ -3,7 +3,7 @@ require('dotenv').config();
 const port = process.env.TCPPORT;
 let clientArray=[];
 
-const db=require('./Database/models/index');
+const db=require('../Database/models/index');
 //   const list = async ()=>{
 //     const result = await db.products.findAll({
 //         include:
@@ -53,7 +53,7 @@ let server = net.createServer(function  (socket) {
     clientArray.push(socket)
     const json = [{
         id : 100,
-        price :00000000000
+        price :000000000001
     }]
     let jsonTwo = `{
         "id" : 1,
