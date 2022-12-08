@@ -39,7 +39,7 @@ let server = net.createServer(function  (socket) {
 	socket.setEncoding('utf8');
     clientArray.push(socket)
     const json = [{
-        ida : 100,
+        id : 100,
         price :123123
     }]
     let jsonTwo = `{
