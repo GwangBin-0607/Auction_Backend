@@ -16,6 +16,10 @@ services:
     build:
       context: ./Backend
       dockerfile: ./http/Dockerfile.prod
+    volumes:
+      - type: bind
+        source: ./Backend/images
+        target: /images
 
   tcp:
     image: gwangbin0607/auction_application:tcp_lastest

@@ -4,7 +4,7 @@ require('dotenv').config();
 const port = process.env.PORT;
 const routes = require('./router');
 
-app.use('/aa', routes);
+app.use('/', routes);
 
 server.listen(port, function () {
     console.log(process.env.NODE_ENV)

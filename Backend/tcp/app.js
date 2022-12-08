@@ -3,50 +3,6 @@ require('dotenv').config();
 const port = process.env.TCPPORT;
 let clientArray=[];
 
-const db=require('./Database/models/index');
-//   const list = async ()=>{
-//     const result = await db.products.findAll({
-//         include:
-//         {model:db.product_images}
-//         ,
-//         plain:true
-//     }).catch((err) => console.log(err));
-//     console.log(result);
-//     return result
-//   }
-//   list();
-
-const User = db.products;
-
-const addUser = async () => {
-    let info = {
-        product_name:"2222",
-        product_id:2
-    };
-  
-    const user = await User.create(info).catch((err) => console.log(err));
-    console.log(JSON.stringify(user));
-  };
-  addUser();
-//   const list = async ()=>{
-//     const result = await db.products.findAll({
-//         include:
-//         {model:db.product_images}
-//         ,
-//         plain:true
-//     }).catch((err) => console.log(err));
-//     console.log(result);
-//     return result
-//   }
-// const list = async ()=>{
-//     const result = await db.products.findAll({
-//         raw:true,
-//         attributes:[['product_id','id'],['product_price','price']]
-//     }).catch((err) => console.log(err));
-//     console.log(result);
-//     return result
-//   }
-
 let server = net.createServer(function  (socket) {
 	console.log(socket.address() + " connected.");
 	socket.setEncoding('utf8');

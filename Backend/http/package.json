@@ -4,7 +4,7 @@
   "description": "Backend",
   "main": "index.js",
   "scripts": {
-    "start": "sequelize-cli db:create &&sequelize-cli db:migrate && sequelize-cli db:seed:all && node app.js",
+    "start": "sequelize-cli db:create &&sequelize-cli db:migrate && node app.js",
     "test": "sequelize-cli db:create --env 'development' &&sequelize-cli db:migrate --env 'development' && env NODE_ENV='development' nodemon app.js"
   },
   "author": "Gwangbin",
@@ -15,6 +15,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.16.3",
+    "mime": "^3.0.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.23.2",
     "sequelize-cli": "^6.5.1"
