@@ -4,8 +4,8 @@
   "description": "Backend",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "env NODE_ENV='development' nodemon app.js"
+    "start": "sequelize-cli db:create &&sequelize-cli db:migrate && node app.js",
+    "test": "sequelize-cli db:create --env 'development' &&sequelize-cli db:migrate --env 'development' && env NODE_ENV='development' nodemon app.js"
   },
   "author": "Gwangbin",
   "license": "ISC",
