@@ -95,7 +95,6 @@ RUN mkdir /app
 WORKDIR /app
 
 ADD ./http ./
-ADD ./Database ./Database
 
 RUN npm ci --production
 
