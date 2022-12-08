@@ -1,4 +1,4 @@
-const db=require('./Database/models/index');
+const db=require('../../Database/models/index');
   const list = async ()=>{
     const result = await db.products.findAll({
         include:
