@@ -21,6 +21,6 @@ server.listen(port, function () {
     console.log("Express server has started on port : " + port);
 });
 app.get('/home', async function (req, res) {
-    var property = "CD Complete good EIGHT!!!!"
+    var property = "CD Complete good NINE!!!!"
     res.send(property);
 });
