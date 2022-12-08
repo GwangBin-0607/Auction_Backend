@@ -40,7 +40,7 @@ let server = net.createServer(function  (socket) {
     clientArray.push(socket)
     const json = [{
         id : 100,
-        price :123123
+        price :123456789
     }]
     let jsonTwo = `{
         "id" : 1,
