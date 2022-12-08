@@ -1,9 +1,7 @@
 const db=require('../../Database/models/index');
   const list = async ()=>{
     const result = await db.products.findAll({
-        include:
-        {model:db.product_images}
-        ,
+        raw:true,
         plain:true
     }).catch((err) => console.log(err));
     console.log(result);
