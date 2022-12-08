@@ -3,7 +3,7 @@ const path = require('path');
 const mime = require('mime');
 module.exports = async (req, res) => {
     var appRoot = process.env.PWD;
-    var come = path.resolve(appRoot, "../", "images", "nike1.png");
+    var come = path.resolve(appRoot, "../", "images", "northPadding.png");
     console.log(appRoot);
     console.log(come);
     fs.readFile(come, function (error, data) {
