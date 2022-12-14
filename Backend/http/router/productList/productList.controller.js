@@ -1,14 +1,10 @@
-const db = require('../../Database/models/index');
-const usecase = require('../../usecase/productImageData.js');
-const list = async () => {
-  const result = await db.products.findAll({
-    raw: true
-  }).catch((err) => console.log(err));
-  console.log(result);
-  return result
+const path = require('path');
+const appRoot = process.env.PWD;
+const come = path.resolve(appRoot, 'usecase');
+const usecase = require(come);
+module.exports.users = async (req, res, next) => {
+    var result = await usecase.getproductlist();
+    console.log(result);
+    res.json(result);
 }
-// exports.users = async (req, res, next) => {
-//     var result = await list()
-//     res.json(result);
-// }
-exports.users = usecase;
+// exports.users = usecase;

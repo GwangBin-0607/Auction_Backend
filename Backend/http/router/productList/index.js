@@ -3,6 +3,6 @@ const router = express.Router();
 const controller = require('./productList.controller');
 
 /* GET users listing. */
-router.get('/images', controller.users);
+router.get('/list', controller.users);
 
 module.exports = router;
