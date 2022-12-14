@@ -1,9 +1,14 @@
 const db = require('../Database/models');
-const list = async () => {
+const allProductList = async () => {
   const result = await db.products.findAll({
+    include:[
+      {
+        model:db.product_images
+      }
+    ],
     raw: true
   }).catch((err) => console.log(err));
   console.log(result);
   return result
 }
-module.exports.getproductlist = list;
+module.exports.allProductList = allProductList;

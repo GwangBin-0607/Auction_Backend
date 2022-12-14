@@ -1,9 +1,6 @@
-const path = require('path');
-const appRoot = process.env.PWD;
-const come = path.resolve(appRoot, 'usecase');
-const usecase = require(come);
-module.exports.users = async (req, res, next) => {
-    var result = await usecase.getproductlist();
+const usecase = require('../../usecase');
+module.exports.all_products = async (req, res, next) => {
+    var result = await usecase.allProductList();
     console.log(result);
     res.json(result);
 }
