@@ -1,4 +1,4 @@
-const db = require('../Database/models');
+const db = require(global.databaseModelsPath);
 const allProductList = async () => {
   const result = await db.products.findAll({
     include:[
