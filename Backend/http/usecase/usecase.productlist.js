@@ -1,4 +1,4 @@
-const db = require('../Database/models/index');
+const db = require('../Database/models');
 const list = async () => {
   const result = await db.products.findAll({
     raw: true

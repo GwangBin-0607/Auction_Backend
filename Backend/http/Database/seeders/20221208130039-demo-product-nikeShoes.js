@@ -10,7 +10,7 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Products',{
-      product_id:1
+      product_name:"NikeShoes"
     })
   }
 };
