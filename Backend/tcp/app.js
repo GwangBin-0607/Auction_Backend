@@ -19,11 +19,15 @@ let server = net.createServer(function  (socket) {
 	socket.on('data', function(data) {
         console.log("Connect Data!!!!!Second!!")
 		console.log(data);
-        console.log(JSON.parse(data).id);
+        try{
+            const json = JSON.parse(data);
+            const id = json.id;
+            console.log(json);
+        }catch(error){
+            console.log(error);
+        }
         clientArray.forEach(client=>{
-            // let result = await list();
             client.write(JSON.stringify(json));
-            // client.write(JSON.stringify(result));
         });
 	});
 	socket.on('close', function () {

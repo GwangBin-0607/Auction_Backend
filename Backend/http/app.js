@@ -2,7 +2,7 @@ var app = require('express')();
 var server = require('http').createServer(app);
 require('dotenv').config();
 const port = process.env.PORT;
-const routes = require('./router');
+const routes = require('./routes');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());

@@ -14,4 +14,4 @@ const allProductList = async () => {
   console.log(result);
   return result
 }
-module.exports = allProductList;
+exports.getList = allProductList;
