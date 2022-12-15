@@ -1,5 +1,6 @@
-const {products,product_images} = require('../Database/models');
-const allProductList = async () => {
+const {products,product_images,product_prices} = require('../Database/models');
+
+async function allProductList(){
   const result = await products.findAll({
     include:[
       {
@@ -11,7 +12,6 @@ const allProductList = async () => {
       }
     ]
   }).catch((err) => console.log(err));
-  console.log(result);
   return result
 }
 exports.getList = allProductList;

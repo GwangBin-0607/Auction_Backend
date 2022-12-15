@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   Product_Price.init({
     product_id: DataTypes.STRING,
     auction_date: DataTypes.STRING,
-    auction_num:DataTypes.STRING
+    auction_num:DataTypes.STRING,
+    price:DataTypes.STRING
   }, {
     timestamps:false,
     sequelize,
