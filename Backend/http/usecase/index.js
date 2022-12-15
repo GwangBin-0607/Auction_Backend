@@ -1,3 +1,5 @@
-let request_product_list = require('./usecase.productList.all.js');
+const request_product_list = require('./productList.all.usecase.js');
+const request_product_image = require('./productImage.usecase.js');
 
-module.exports = request_product_list;
+exports.requestProductList = request_product_list;
+exports.requestProductImage = request_product_image;

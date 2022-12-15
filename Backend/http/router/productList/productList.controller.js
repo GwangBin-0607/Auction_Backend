@@ -1,7 +1,6 @@
-const usecase = require(global.usecasePath);
-module.exports.all_products = async (req, res, next) => {
-    var result = await usecase.allProductList();
-    console.log(result);
+const usecase = require('../../usecase');
+
+exports.allProductList = async (req, res, next) => {
+    var result = await usecase.requestProductList();
     res.json(result);
 }
-// exports.users = usecase;

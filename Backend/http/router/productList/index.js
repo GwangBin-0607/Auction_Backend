@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('./productList.controller');
+const listController = require('./productList.controller');
+const imageController = require('./productImage.controller');
 
-/* GET users listing. */
-router.get('/alllist', controller.all_products);
+router.get('/alllist', listController.allProductList);
+router.post('/productimage',imageController.product_image);
 
 module.exports = router;

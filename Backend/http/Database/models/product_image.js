@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       primaryKey:true
     },
-    product_id:DataTypes.STRING
+    product_id:DataTypes.STRING,
+    main_image:DataTypes.STRING
   }, {
     timestamps:false,
     sequelize,
