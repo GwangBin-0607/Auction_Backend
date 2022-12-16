@@ -6,6 +6,11 @@ test('Product Price List', async () => {
   // await expect(usecase.getList()).toThrow(); //Error = ERR_UNHANDLED_REJECTION
   // const data = usecase.getList()
   // await expect(data.count).resolves.toBe(5);
+  class TestMock{
+    constructor(product_id,){
+
+    }
+  }
   const data = await usecase.getList()
   console.log(data);
   expect(data.product_id).toBe(1);
