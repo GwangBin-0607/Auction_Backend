@@ -1,4 +1,4 @@
-const {products,product_images,product_prices} = require('../Database/models');
+const {products,product_images,product_prices} = require('../database/models');
 
 async function allProductList(){
   const result = await products.findAll({
@@ -9,9 +9,11 @@ async function allProductList(){
         where:{
           main_image:1
         }
+      },{
+        model:product_prices
       }
     ]
-  }).catch((err) => console.log(err));
+  })
   return result
 }
 exports.getList = allProductList;

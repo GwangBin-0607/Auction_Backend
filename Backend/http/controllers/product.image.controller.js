@@ -1,5 +1,5 @@
-const usecase = require('../usecase/productImage.usecase');
-module.exports = async (req, res, next) => {
+const usecase = require('../usecase/product.image.usecase');
+module.exports =  async (req, res, next) => {
     try{
         let result = await usecase.getImage(req.body.imageURL);
         console.log(result);
@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
             errno:err.errno,
             message:"없음"
         }
-        res.status(500).json(errorMessage);
+        res.status(400).json(errorMessage);
     }
 
 }
