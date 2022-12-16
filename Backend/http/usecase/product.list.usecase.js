@@ -1,4 +1,4 @@
-const {products,product_images,product_prices} = require('../database/models');
+const {products,product_images,product_prices} = require('../Database/models');
 
 async function allProductList(){
   const result = await products.findAll({
