@@ -9,7 +9,7 @@ module.exports = {
       },
       auction_date: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         primaryKey:true
       },
       auction_num:{

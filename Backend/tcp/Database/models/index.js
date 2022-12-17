@@ -32,9 +32,8 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
-db.products = db['Product'];
-db.product_images = db['Product_Images'];
-console.log("HELLO");
+db.product_prices = db['Product_Price'];
+console.log(this.product_prices)
 // sequelize
 //   .sync({ force: false})
 //   .then(() => {

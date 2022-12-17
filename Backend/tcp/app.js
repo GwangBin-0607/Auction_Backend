@@ -2,6 +2,7 @@ const net = require('net');
 require('dotenv').config();
 const port = process.env.TCPPORT;
 let clientArray=[];
+let usecase = require('./usecase/product.price.usecase')
 
 let server = net.createServer(function  (socket) {
 	console.log(socket.address() + " connected.");
@@ -15,27 +16,21 @@ let server = net.createServer(function  (socket) {
         "id" : 1,
         "price" : 1000
     }`;
-    // socket.write("hello");
-	socket.on('data', function(data) {
-        console.log("Connect Data!!!!!Second!!")
-		console.log(data);
+	socket.on('data', async function(data) {
+        console.log(data);
         try{
-            const json = JSON.parse(data);
-            const id = json.id;
-            console.log(json);
-        }catch(error){
-            console.log(error);
+            let price = await usecase.getList()
+            console.log(price);
+            clientArray.forEach(client=>{
+                client.write(JSON.stringify(price));
+            });
+        }catch(e){
+            console.log(e);
         }
-        clientArray.forEach(client=>{
-            client.write(JSON.stringify(json));
-        });
 	});
 	socket.on('close', function () {
 		console.log('client disconnted.');
 	});
-	setTimeout(() => {
-		// socket.write('w111111elcome to server!!!!123!aasdasd!!!');
-	}, 500);
 });
 
 // print error message
@@ -48,3 +43,15 @@ server.on('error', function (err) {
 server.listen(port, function () {
 	console.log('listening on'+port);
 });
+
+const client = new net.Socket();
+
+const HOST = "127.0.0.1";
+client.connect(port,HOST, () => {
+    client.setEncoding('utf8');
+    client.write('Hello world!');
+});
+client.on('data',async function(data){
+    console.log("On Data");
+    console.log(data);
+})
