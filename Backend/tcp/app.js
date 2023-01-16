@@ -43,9 +43,13 @@ let server = net.createServer(async function (socket) {
                     "dataType":"InputStreamProductPrice",
                     "data":[{"product_id":1,"product_price":1100}]
                 }`
+
                 // socket.write(json+'/');
+                setTimeout(() => {
+                    console.log("Write!!")
+                    socket.write(jsonTwo+'/');
+                }, 5000);
                 
-                socket.write(jsonTwo+'/');
             }
         });
         // try{
