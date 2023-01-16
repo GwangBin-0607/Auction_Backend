@@ -78,7 +78,7 @@ let server = net.createServer(async function (socket) {
         let removeIndex = clientArray.indexOf(socket);
         clientArray.splice(removeIndex, 1)
         console.log('disconnect')
-        console.log(clientArray);
+        console.log(clientArray.length);
     });
 });
 // print error message
