@@ -18,6 +18,7 @@ let server = net.createServer(async function (socket) {
         console.log("Write!!")
         socket.write(jsonTwo+'/');
     },3000);
+    
     socket.on('data', async function (data) {
         /**
          * @typedef {Object} StreamProductPrice
