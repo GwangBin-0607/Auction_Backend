@@ -44,6 +44,7 @@ let server = net.createServer(async function (socket) {
                     "data":[{"product_id":1,"product_price":1100}]
                 }`
                 // socket.write(json+'/');
+                
                 socket.write(jsonTwo+'/');
             }
         });
