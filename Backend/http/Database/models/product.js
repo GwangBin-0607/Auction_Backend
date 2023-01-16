@@ -17,10 +17,10 @@ module.exports = (sequelize, DataTypes) => {
   Product.init({
     product_id: {
       primaryKey:true,
-      type:DataTypes.STRING
+      type:DataTypes.INTEGER
     },
     product_name: DataTypes.STRING,
-    product_price: DataTypes.STRING
+    product_price: DataTypes.INTEGER
   }, {
     timestamps:false,
     sequelize,

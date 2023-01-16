@@ -1,4 +1,4 @@
-const usecase = require('../usecase/product.list.usecase');
+const usecase = require('../services/product.list.service');
 
 module.exports = async (req, res, next) => {
     try {

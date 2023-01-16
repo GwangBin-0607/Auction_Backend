@@ -28,12 +28,10 @@ fs
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
-    console.log(db[modelName]);
     db[modelName].associate(db);
   }
 });
 db.product_prices = db['Product_Price'];
-console.log(this.product_prices)
 // sequelize
 //   .sync({ force: false})
 //   .then(() => {

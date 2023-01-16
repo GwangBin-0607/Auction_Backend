@@ -3,9 +3,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn('Product_Images','main_image',{
-      type:Sequelize.BOOLEAN,
-      defaultValue:false
+    await queryInterface.addColumn('Product_Images','priority',{
+      type:Sequelize.INTEGER
     })
   },
 

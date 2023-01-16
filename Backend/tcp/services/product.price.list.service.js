@@ -1,7 +1,7 @@
 const {product_prices} = require('../Database/models');
-console.log(product_prices);
  async function allProductPriceList(){
-  const result = product_prices.findOne({
+  const result = await product_prices.findAll({
+    attributes:['product_id',['price','product_price']],
   })
   return result
 }

@@ -12,14 +12,9 @@ module.exports = {
         type: Sequelize.DATEONLY,
         primaryKey:true
       },
-      auction_num:{
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
       price:{
         allowNull:false,
-        type:Sequelize.INTEGER,
-        primaryKey:true
+        type:Sequelize.INTEGER
       }
     });
   },

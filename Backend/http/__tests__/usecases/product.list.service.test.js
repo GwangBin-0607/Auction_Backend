@@ -1,4 +1,4 @@
-const usecase = require('../../usecase/product.list.usecase');
+const usecase = require('../../services/product.list.service');
 test('Product Price List', async () => {
   /* const data = await usecase.getList(); 
     expect(usecase.getList()).toThrow()*/ //Error

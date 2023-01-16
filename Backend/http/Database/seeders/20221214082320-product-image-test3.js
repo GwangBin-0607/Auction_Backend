@@ -8,7 +8,7 @@ module.exports = {
     await queryInterface.bulkInsert('Product_Images',[{
       product_id:3,
       image_url:come,
-      main_image:true
+      priority:1
     }]);
   },
 

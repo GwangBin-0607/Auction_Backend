@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING,
       primaryKey:true
     },
-    product_id:DataTypes.STRING,
-    main_image:DataTypes.STRING
+    product_id:DataTypes.INTEGER,
+    priority:DataTypes.INTEGER
   }, {
     timestamps:false,
     sequelize,

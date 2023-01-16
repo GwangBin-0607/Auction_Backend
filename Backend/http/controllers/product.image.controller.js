@@ -1,4 +1,4 @@
-const usecase = require('../usecase/product.image.usecase');
+const usecase = require('../services/product.image.service');
 module.exports =  async (req, res, next) => {
     try{
         let result = await usecase.getImage(req.body.imageURL);

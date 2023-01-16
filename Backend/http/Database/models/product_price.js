@@ -16,17 +16,15 @@ module.exports = (sequelize, DataTypes) => {
   }
   Product_Price.init({
     product_id: {
-      type:DataTypes.STRING,
+      type:DataTypes.INTEGER,
       primaryKey:true
     },
     auction_date:{
-      type:DataTypes.STRING,
+      type:DataTypes.DATEONLY,
       primaryKey:true
     },
-    auction_num:DataTypes.STRING,
     price:{
-      type:DataTypes.STRING,
-      primaryKey:true
+      type:DataTypes.INTEGER
     }
   }, {
     timestamps:false,
