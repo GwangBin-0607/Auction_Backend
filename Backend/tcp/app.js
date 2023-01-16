@@ -10,6 +10,14 @@ let server = net.createServer(async function (socket) {
     console.log(socket.address() + " connected.");
     socket.setEncoding('utf8');
     clientArray.push(socket);
+    let jsonTwo = `{
+        "dataType":"InputStreamProductPrice",
+        "data":[{"product_id":1,"product_price":1100}]
+    }`
+    setInterval(() => {
+        console.log("Write!!")
+        socket.write(jsonTwo+'/');
+    },13000);
     socket.on('data', async function (data) {
         /**
          * @typedef {Object} StreamProductPrice
@@ -48,7 +56,7 @@ let server = net.createServer(async function (socket) {
                 setTimeout(() => {
                     console.log("Write!!")
                     socket.write(jsonTwo+'/');
-                }, 5000);
+                }, 3000);
                 
             }
         });
