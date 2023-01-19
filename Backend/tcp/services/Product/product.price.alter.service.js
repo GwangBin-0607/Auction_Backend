@@ -1,7 +1,7 @@
 //@ts-check
 const { Sequelize } = require('sequelize');
-const { product_prices } = require('../Database/models');
-const randomNumber = require('./scheduler/randomNumber/randomNumber')
+const { product_prices } = require('../../Database/models');
+const randomNumber = require('../../scheduler/randomNumber/randomNumber')
 
 async function productPriceUpdate() {
   /** @type  {Array.<{dataValues:randomNumber.Product_Price}>}*/
