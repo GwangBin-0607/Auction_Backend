@@ -20,3 +20,4 @@ class Product_DAO {
         return returnProduct
     }
 }
+exports.Product_DAO = Product_DAO;

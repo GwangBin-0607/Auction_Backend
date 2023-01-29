@@ -9,7 +9,7 @@ class Product_UpDown_DAO {
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<Product_UpDown|null>}
+     * @returns {Promise<Product_UpDown>}
      * @throws {Error}
      */
     async findProductUpDown(product_id) {
@@ -30,3 +30,4 @@ class Product_UpDown_DAO {
         })
     }
 }
+exports.Product_UpDown_DAO = Product_UpDown_DAO

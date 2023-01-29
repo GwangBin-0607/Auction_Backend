@@ -1,7 +1,7 @@
 // jest.setTimeout(13000);
 //@ts-check
 const net = require('net');
-const fakeSocketServer = require('./fakeSocketServer')
+const fakeSocketServer = require('../../fakeSocketServer')
 test('Done CallBack', done => {
     fakeSocketServer.openServer();
     const client = new net.Socket();
@@ -10,20 +10,20 @@ test('Done CallBack', done => {
         client.setEncoding('utf8');
         let mockData = JSON.stringify({
             completionId:1,
-            dataType:1,
+            inputType:1,
             data:{
                 stateNumber:0
             }
         })
         let mockStreamData = JSON.stringify({
             completionId:1,
-            dataType:2,
+            inputType:2,
             data:{
                 product_id:1,
-                product_price:7000
+                product_price:8500
             }
         });
-        client.write(mockStreamData+'/');
+        client.write(mockData+'/');
     });
     client.on('data', async function (data) {
         console.log("On Data");

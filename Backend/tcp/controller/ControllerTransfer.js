@@ -1,43 +1,24 @@
 // @ts-check
-/**
-* @typedef {Object} DataForm
-* @property {number} completionId
-* @property {InputTypes} dataType
-* @property {any} data
-*/
-/**
- * @typedef {Object} StreamProductPrice
- * @property {number} product_id
- * @property {number} product_price
- */
-/**
- * @typedef {Object} StreamStateUpdate
- * @property {number} stateNumber
- */
-/**
- * @enum {number}
-*/
-const InputTypes = {
-    /**@readonly */
-    StreamStateUpdate: 1,
-    /**@readonly */
-    StreamProductPriceUpdate: 2
-};
-class DataTransfer {
+const {InputData} = require('../Dto/InputData');
+const {SocketStatusUpdate} = require('../Dto/SocketStatusUpdate');
+const {StreamProductPrice} = require('../Dto/StreamProductPrice');
+const {InputDataType} = require('../Dto/DataType');
+
+class ControllerTransfer {
 
 /**
  * @param {Buffer} data 
- * @returns {Array<DataForm>}
+ * @returns {Array<InputData>}
  */
     dataToCompletion(data) {
         const splitData = data.toString().split('/')
         /**
-         * @type {Array<DataForm>}
+         * @type {Array<InputData>}
          */
         let returnData = []
         for(let each of splitData){
             if (each != '') {
-                /** @type {DataForm} */
+                /** @type {InputData} */
                 let parse = JSON.parse(each);
                 try {
                     returnData.push(this.mappingData(parse))
@@ -49,38 +30,25 @@ class DataTransfer {
         return returnData;
     }
     /**
-     * @param {DataForm} data
+     * @param {InputData} data
      * @throws
-     * @returns {DataForm}
+     * @returns {InputData}
+     * @private
      */
-    /**@private */
     mappingData(data) {
         let completionId = this.returncompletionId(data.completionId);
-        let inputType = this.dataTypeCheck(data.dataType);
-        /** @type {DataForm} */
-        let returnData;
+        let inputType = this.dataTypeCheck(data.inputType);
         switch (inputType) {
-            case InputTypes.StreamProductPriceUpdate:
+            case InputDataType.StreamProductPriceUpdate:
                 /** @type {StreamProductPrice} */
                 let streamProductPrice = data.data
                 let resultProductPrice = this.returnStreamProductPrice(streamProductPrice);
-                /** @type {DataForm} */
-                returnData = {
-                    data: resultProductPrice,
-                    dataType: inputType,
-                    completionId: completionId
-                }
-                return returnData;
-            case InputTypes.StreamStateUpdate:
-                /** @type {StreamStateUpdate} */
+                return new InputData(completionId,inputType,resultProductPrice);
+            case InputDataType.SocketStatusUpdate:
+                /** @type {SocketStatusUpdate} */
                 let streamStateUpdate = data.data
                 let resultStreamStateUpdate = this.returnStreamStateUpdate(streamStateUpdate);
-                returnData = {
-                    data: resultStreamStateUpdate,
-                    dataType: inputType,
-                    completionId: completionId
-                }
-                return returnData
+                return new InputData(completionId,inputType,resultStreamStateUpdate);
         }
         throw Error("Not Data");
     }
@@ -88,8 +56,8 @@ class DataTransfer {
      * @param {StreamProductPrice} data
      * @throws
      * @returns {StreamProductPrice}
+     * @private
      */
-    /**@private */
     returnStreamProductPrice(data) {
         if (data.product_id != undefined && data.product_price != undefined) {
             return data;
@@ -99,11 +67,11 @@ class DataTransfer {
     }
     /**
      * 
-     * @param {StreamStateUpdate} data 
+     * @param {SocketStatusUpdate} data 
      * @throws
-     * @returns {StreamStateUpdate}
+     * @returns {SocketStatusUpdate}
+     * @private
      */
-    /**@private */
     returnStreamStateUpdate(data) {
         if (data.stateNumber != undefined) {
             return data;
@@ -115,8 +83,8 @@ class DataTransfer {
      * @param {number} completionId
      * @throws
      * @returns {number}
+     * @private
      */
-    /** @private */
     returncompletionId(completionId) {
         if (completionId == undefined) {
             throw Error("No Completion Id");
@@ -125,21 +93,20 @@ class DataTransfer {
         }
     }
     /**
-     * @param {number} type 
-     * @returns {InputTypes}
+     * @param {InputDataType} type 
+     * @returns {InputDataType}
+     * @private
      * @throws
      */
-    /**@private */
     dataTypeCheck(type) {
         switch (type) {
-            case InputTypes.StreamStateUpdate:
-                return InputTypes.StreamStateUpdate;
-            case InputTypes.StreamProductPriceUpdate:
-                return InputTypes.StreamProductPriceUpdate;
+            case InputDataType.SocketStatusUpdate:
+                return InputDataType.SocketStatusUpdate;
+            case InputDataType.StreamProductPriceUpdate:
+                return InputDataType.StreamProductPriceUpdate;
             default:
                 throw Error("Not Match InputType");
         }
     }
 }
-module.exports.class = DataTransfer
-module.exports.InputTypes = InputTypes
+module.exports.ControllerTransfer = ControllerTransfer

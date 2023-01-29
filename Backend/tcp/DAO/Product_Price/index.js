@@ -1,62 +1,61 @@
 //@ts-check
 const { product_prices } = require('../../Database/models');
-/**
- * @typedef {Object} Product_Price
- * @property {number} product_id
- * @property {number} price
- * @property {String} auction_date
- */
-class Product_Price_DAO {
+const {Product_Price} = require('../../Entity/Product_Price');
 
+class Product_Price_DAO {
+    /**
+     * 
+     * @returns {Promise<Product_Price>}
+     */
     async allProductPriceList() {
         return await product_prices.findAll()
     }
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<Product_Price|null>}
+     * @returns {Promise<Product_Price>}
+     * @throws
      */
     async findProductPriceRecent(product_id) {
         return await product_prices.findOne({
             where: { product_id: product_id },
             order: [['auction_date', 'DESC']]
-        })
+        });
     }
     /**
     * 
     * @param {Product_Price} streamProductPrice
     * @throws
-    * @returns {Promise<Product_Price>}
+    * @returns {Promise<Boolean>}
     */
     async insertProduct_Price(streamProductPrice) {
-        return await product_prices.create({
-            product_id: streamProductPrice.product_id,
-            price: streamProductPrice.price,
-            auction_date: streamProductPrice.auction_date
-        })
+        try {
+            await product_prices.create({
+              product_id: streamProductPrice.product_id,
+              price: streamProductPrice.price,
+              auction_date: streamProductPrice.auction_date
+            })
+            return true
+          } catch {
+            return false
+          }
     }
     /**
     * 
     * @param {Product_Price} streamProductPrice
-    * @returns {Promise<Array<number>>} [0] => No Update, [count] => Product updated as many as count
+    * @returns {Promise<Boolean>} [0] => No Update, [count] => Product updated as many as count
     */
     async updateProduct_Price(streamProductPrice) {
-        return await product_prices.update({
+        let resultArray = await product_prices.update({
             price: streamProductPrice.price
-        }, {
+          }, {
             where: [{ product_id: streamProductPrice.product_id, auction_date: streamProductPrice.auction_date }]
-        })
-    }
-    /**
-    * 
-    * @param {number} product_id 
-    * @returns {Promise<Product_Price|null>}
-    */
-    async findProductPrice(product_id) {
-        return await product_prices.findOne({
-            where: { product_id: product_id },
-            order: [['auction_date', 'DESC']]
-        })
+          })
+          if (resultArray[0] == 0) {
+            return false
+          } else {
+            return true
+          }
     }
 
 }
