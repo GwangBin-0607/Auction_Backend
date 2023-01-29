@@ -1,10 +1,10 @@
 //@ts-check
-const {InputDataType} = require('./DataType');
-class InputData{
+const {DTO_InputDataType} = require('./DTO_DataType');
+class DTO_InputData{
 /**
  * 
  * @param {number} completionId 
- * @param {InputDataType} inputType 
+ * @param {DTO_InputDataType} inputType 
  * @param {any} data 
  */
     constructor(completionId,inputType,data){
@@ -13,4 +13,4 @@ class InputData{
          this.data = data
     }
 }
-module.exports.InputData = InputData
+module.exports.DTO_InputData = DTO_InputData

@@ -1,6 +1,6 @@
 //@ts-check
-const {OutputDataType} = require('./DataType');
-class OutputCompletionData{
+const {DTO_OutputDataType} = require('./DTO_DataType');
+class DTO_OutputCompletionData{
     /**
      * 
      * @param {number} completionId 
@@ -11,7 +11,7 @@ class OutputCompletionData{
             completionId : completionId,
             result: result
         }
-        this.dataType = OutputDataType.RequestResponse
+        this.dataType = DTO_OutputDataType.RequestResponse
     }
 }
-exports.OutputCompletionData = OutputCompletionData
+exports.DTO_OutputCompletionData = DTO_OutputCompletionData

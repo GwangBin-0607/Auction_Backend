@@ -1,24 +1,24 @@
 // @ts-check
-const {InputData} = require('../Dto/InputData');
-const {SocketStatusUpdate} = require('../Dto/SocketStatusUpdate');
-const {StreamProductPrice} = require('../Dto/StreamProductPrice');
-const {InputDataType} = require('../Dto/DataType');
+const {DTO_InputData} = require('../DTO/DTO_InputData');
+const {DTO_RequestUpdateSocketStatus} = require('../DTO/DTO_RequestUpdateSocketStatus');
+const {DTO_RequestUpdateStreamProductPrice} = require('../DTO/DTO_RequestUpdateStreamProductPrice');
+const {DTO_InputDataType} = require('../DTO/DTO_DataType');
 
 class ControllerTransfer {
 
 /**
  * @param {Buffer} data 
- * @returns {Array<InputData>}
+ * @returns {Array<DTO_InputData>}
  */
     dataToCompletion(data) {
         const splitData = data.toString().split('/')
         /**
-         * @type {Array<InputData>}
+         * @type {Array<DTO_InputData>}
          */
         let returnData = []
         for(let each of splitData){
             if (each != '') {
-                /** @type {InputData} */
+                /** @type {DTO_InputData} */
                 let parse = JSON.parse(each);
                 try {
                     returnData.push(this.mappingData(parse))
@@ -30,32 +30,32 @@ class ControllerTransfer {
         return returnData;
     }
     /**
-     * @param {InputData} data
+     * @param {DTO_InputData} data
      * @throws
-     * @returns {InputData}
+     * @returns {DTO_InputData}
      * @private
      */
     mappingData(data) {
         let completionId = this.returncompletionId(data.completionId);
         let inputType = this.dataTypeCheck(data.inputType);
         switch (inputType) {
-            case InputDataType.StreamProductPriceUpdate:
-                /** @type {StreamProductPrice} */
+            case DTO_InputDataType.StreamProductPriceUpdate:
+                /** @type {DTO_RequestUpdateStreamProductPrice} */
                 let streamProductPrice = data.data
                 let resultProductPrice = this.returnStreamProductPrice(streamProductPrice);
-                return new InputData(completionId,inputType,resultProductPrice);
-            case InputDataType.SocketStatusUpdate:
-                /** @type {SocketStatusUpdate} */
+                return new DTO_InputData(completionId,inputType,resultProductPrice);
+            case DTO_InputDataType.SocketStatusUpdate:
+                /** @type {DTO_RequestUpdateSocketStatus} */
                 let streamStateUpdate = data.data
                 let resultStreamStateUpdate = this.returnStreamStateUpdate(streamStateUpdate);
-                return new InputData(completionId,inputType,resultStreamStateUpdate);
+                return new DTO_InputData(completionId,inputType,resultStreamStateUpdate);
         }
         throw Error("Not Data");
     }
     /**
-     * @param {StreamProductPrice} data
+     * @param {DTO_RequestUpdateStreamProductPrice} data
      * @throws
-     * @returns {StreamProductPrice}
+     * @returns {DTO_RequestUpdateStreamProductPrice}
      * @private
      */
     returnStreamProductPrice(data) {
@@ -67,9 +67,9 @@ class ControllerTransfer {
     }
     /**
      * 
-     * @param {SocketStatusUpdate} data 
+     * @param {DTO_RequestUpdateSocketStatus} data 
      * @throws
-     * @returns {SocketStatusUpdate}
+     * @returns {DTO_RequestUpdateSocketStatus}
      * @private
      */
     returnStreamStateUpdate(data) {
@@ -93,17 +93,17 @@ class ControllerTransfer {
         }
     }
     /**
-     * @param {InputDataType} type 
-     * @returns {InputDataType}
+     * @param {DTO_InputDataType} type 
+     * @returns {DTO_InputDataType}
      * @private
      * @throws
      */
     dataTypeCheck(type) {
         switch (type) {
-            case InputDataType.SocketStatusUpdate:
-                return InputDataType.SocketStatusUpdate;
-            case InputDataType.StreamProductPriceUpdate:
-                return InputDataType.StreamProductPriceUpdate;
+            case DTO_InputDataType.SocketStatusUpdate:
+                return DTO_InputDataType.SocketStatusUpdate;
+            case DTO_InputDataType.StreamProductPriceUpdate:
+                return DTO_InputDataType.StreamProductPriceUpdate;
             default:
                 throw Error("Not Match InputType");
         }

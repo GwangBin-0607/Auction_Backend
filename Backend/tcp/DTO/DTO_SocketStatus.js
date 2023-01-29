@@ -1,6 +1,6 @@
 // @ts-check
 const net = require('net');
-class SocketStatus {
+class DTO_SocketStatus {
     /**
      * @param {net.Socket} socket 
      */
@@ -9,4 +9,4 @@ class SocketStatus {
         this.socket = socket;
     }
 }
-exports.SocketStatus = SocketStatus;
+exports.DTO_SocketStatus = DTO_SocketStatus;

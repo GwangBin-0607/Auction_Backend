@@ -1,5 +1,5 @@
 //@ts-check
-class StreamProductPrice{
+class DTO_RequestUpdateStreamProductPrice{
     /**
      * 
      * @param {number} product_id 
@@ -10,4 +10,4 @@ class StreamProductPrice{
         this.product_price = product_price
     }
 }
-module.exports.StreamProductPrice = StreamProductPrice
+module.exports.DTO_RequestUpdateStreamProductPrice = DTO_RequestUpdateStreamProductPrice

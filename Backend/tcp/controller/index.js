@@ -2,14 +2,16 @@
 const net = require('net');
 const { ControllerTransfer } = require('./ControllerTransfer');
 const { SocketStatusService } = require('../services/SocketStatusService');
-const { OutputCompletionData } = require('../Dto/OutputCompletionData');
+const { DTO_OutputCompletionData } = require('../DTO/DTO_OutputCompletionData');
 const { StreamProductPriceUpdateService } = require('../services/StreamProductPriceUpdateService');
-const { SocketStatus } = require('../Dto/SocketStatus')
-const {InputDataType} = require('../Dto/DataType');
-const { UpdateStreamProductPrice } = require('../Dto/UpdateStreamProductPrice');
-const { OutputStreamProductPrice } = require('../Dto/OutputStreamProductPrice');
+const { DTO_SocketStatus } = require('../DTO/DTO_SocketStatus')
+const { DTO_InputDataType } = require('../DTO/DTO_DataType');
+const { DTO_ResponseUpdateStreamProductPrice } = require('../DTO/DTO_ResponseUpdateStreamProductPrice');
+const { DTO_OutputStreamProductPrice } = require('../DTO/DTO_OutputStreamProductPrice');
+const { DTO_RequestUpdateSocketStatus } = require('../DTO/DTO_RequestUpdateSocketStatus');
+const { DTO_RequestUpdateStreamProductPrice } = require('../DTO/DTO_RequestUpdateStreamProductPrice');
 
- 
+
 class Controller {
     constructor() {
         this.controllerTransfer = new ControllerTransfer();
@@ -28,15 +30,19 @@ class Controller {
 
         inputData.forEach(async eachInputData => {
             switch (eachInputData.inputType) {
-                case InputDataType.SocketStatusUpdate:
+                case DTO_InputDataType.SocketStatusUpdate:
+                    /**@type {DTO_RequestUpdateSocketStatus} */
+                    let socketStatusUpdate = eachInputData.data
                     /**@type {Boolean} */
-                    let socketStatusUpdateResult = await this.socketStatusService.updateSocketStatus(socket, eachInputData.data);
-                    this.writeSocket(socket, new OutputCompletionData(eachInputData.completionId, socketStatusUpdateResult));
+                    let socketStatusUpdateResult = await this.socketStatusService.updateSocketStatus(socket, socketStatusUpdate);
+                    this.writeSocket(socket, new DTO_OutputCompletionData(eachInputData.completionId, socketStatusUpdateResult));
                     break;
-                case InputDataType.StreamProductPriceUpdate:
-                    /**@type {UpdateStreamProductPrice} */
-                    let streamProductPriceResult = await this.streamProductPriceUpdateService.updateProductPrice(eachInputData.data);
-                    this.writeSocket(socket, new OutputCompletionData(eachInputData.completionId, streamProductPriceResult.complete));
+                case DTO_InputDataType.StreamProductPriceUpdate:
+                    /**@type {DTO_RequestStreamProductPrice} */
+                    let streamProductPriceUpdate = eachInputData.data
+                    /**@type {DTO_ResponseUpdateStreamProductPrice} */
+                    let streamProductPriceResult = await this.streamProductPriceUpdateService.updateProductPrice(streamProductPriceUpdate);
+                    this.writeSocket(socket, new DTO_OutputCompletionData(eachInputData.completionId, streamProductPriceResult.complete));
                     if (streamProductPriceResult.complete) {
                         let allSockets = this.socketStatusService.allSockets();
                         await this.allSocketsWriteStreamProductPrice(allSockets, streamProductPriceResult.product_id);
@@ -56,12 +62,12 @@ class Controller {
     }
     /**
      * 
-     * @param {Array<SocketStatus>} socketStatus 
+     * @param {Array<DTO_SocketStatus>} socketStatus 
      * @param {number} product_id
      * @private
      */
     async allSocketsWriteStreamProductPrice(socketStatus, product_id) {
-        /**@type {OutputStreamProductPrice} */
+        /**@type {DTO_OutputStreamProductPrice} */
         let streamProductPrice = await this.streamProductPriceUpdateService.findProductUpdownState(product_id);
         let returnData = JSON.stringify({
             product_id: streamProductPrice.product_id,

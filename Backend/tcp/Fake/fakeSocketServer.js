@@ -2,10 +2,9 @@
 const net = require('net');
 require('dotenv').config();
 const port = process.env.TCPPORT;
-const {Controller} = require('./Controller');
+const {Controller} = require('../Controller');
 const serviceClass = new Controller();
 let server = net.createServer(async function (socket) {
-    socket.write('Connect');
     socket.setEncoding('utf8');
     serviceClass.connect(socket);
     socket.on('data', async function (data) {

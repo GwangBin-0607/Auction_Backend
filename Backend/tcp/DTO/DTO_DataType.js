@@ -2,7 +2,7 @@
 /**
  * @enum {number}
 */
-const OutputDataTypes = {
+const DTO_OutputDataTypes = {
     /**@readonly */
     RequestResponse: 1,
     /**@readonly */
@@ -11,11 +11,11 @@ const OutputDataTypes = {
 /**
  * @enum {number}
 */
-const InputDataType = {
+const DTO_InputDataType = {
     /**@readonly */
     SocketStatusUpdate: 1,
     /**@readonly */
     StreamProductPriceUpdate: 2
 };
-exports.InputDataType = InputDataType;
-exports.OutputDataType = OutputDataTypes;
+exports.DTO_InputDataType = DTO_InputDataType;
+exports.DTO_OutputDataType = DTO_OutputDataTypes;

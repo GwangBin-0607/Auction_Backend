@@ -1,12 +1,12 @@
 
 //@ts-check
 const net = require('net');
-const {SocketStatus} = require('../Dto/SocketStatus');
-const {SocketStatusUpdate} = require('../Dto/SocketStatusUpdate');
-const {Product_DAO} = require('../Dao/Product/index');
+const {DTO_SocketStatus} = require('../DTO/DTO_SocketStatus');
+const {DTO_RequestUpdateSocketStatus} = require('../DTO/DTO_RequestUpdateSocketStatus');
+const {Product_DAO} = require('../DAO/Product/index');
 class SocketStatusService{
     constructor(){
-        /** @type {Array<SocketStatus>} */
+        /** @type {Array<DTO_SocketStatus>} */
         this.sockets = []
         this.showProductByPage = 15;
         this.productDao = new Product_DAO()
@@ -16,32 +16,32 @@ class SocketStatusService{
      * @param {net.Socket} socket 
      */
     registerSocket(socket){
-        let returnSocket = new SocketStatus(socket);
+        let returnSocket = new DTO_SocketStatus(socket);
         this.sockets.push(returnSocket);
     }
     /**
-     * @returns {Array<SocketStatus>}
+     * @returns {Array<DTO_SocketStatus>}
      */
     allSockets(){
         return this.sockets;
     }
     /**
      * @param {net.Socket} socket 
-     * @param {SocketStatusUpdate}  statusNumber
+     * @param {DTO_RequestUpdateSocketStatus}  request
      * @returns {Promise<Boolean>}
      * @throws
      */
-     async updateSocketStatus(socket,statusNumber){
+     async updateSocketStatus(socket,request){
         for(let i=0;i<this.sockets.length;i++){
             if (this.sockets[i].socket == socket){
-                let result = await this.updateStatus(this.sockets[i],statusNumber.stateNumber);
+                let result = await this.updateStatus(this.sockets[i],request.stateNumber);
                 return result
             }
         }
         throw Error('Not Update Socket Status');
     }
     /**
-     * @param {SocketStatus} socket 
+     * @param {DTO_SocketStatus} socket 
      * @param {number}  statusNumber
      * @returns {Promise<Boolean>}
      * @throws

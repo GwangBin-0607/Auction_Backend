@@ -1,9 +1,9 @@
 //@ts-check
-class OutputStreamProductPrice{
+class DTO_OutputStreamProductPrice{
     constructor(product_id,product_price,state){
         this.product_id = product_id
         this.product_price = product_price
         this.state = state
     }
 }
-exports.OutputStreamProductPrice = OutputStreamProductPrice
+exports.DTO_OutputStreamProductPrice = DTO_OutputStreamProductPrice
