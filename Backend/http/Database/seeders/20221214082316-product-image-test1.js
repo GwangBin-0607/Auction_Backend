@@ -6,7 +6,7 @@ var come = path.resolve(appRoot, "../", "images", "northPadding.png");
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Product_Images',[{
-      product_id:1,
+      product_id:3,
       image_url:come,
       priority:1
     }]);

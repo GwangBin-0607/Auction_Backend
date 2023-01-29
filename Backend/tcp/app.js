@@ -2,23 +2,29 @@
 const net = require('net');
 require('dotenv').config();
 const port = process.env.TCPPORT;
-let clientArray = [];
-const socketStatus = require('./services/SocketStatus/socketStatus')
-socketStatus.SocketStatus
+const service = require('./socket');
+const serviceClass = new service.Service();
 let server = net.createServer(async function (socket) {
     socket.setEncoding('utf8');
-    clientArray.push(socket);
+    serviceClass.connectSocket(socket);
     socket.on('data', async function (data) {
-
-        //         socket.write(json+'/');
-        //     }
-        // });
+        console.log("====")
+        console.log(data);
+        serviceClass.inputData(socket,data);
+        let json = `{
+            "dataType":2,
+           "data" :{
+            "product_id":1,
+            "product_price":300
+           } 
+        }`
+        socket.write(json+'/');
     });
     socket.on('close', function () {
-        let removeIndex = clientArray.indexOf(socket);
-        clientArray.splice(removeIndex, 1)
-        console.log('disconnect')
-        console.log(clientArray.length);
+        // let removeIndex = clientArray.indexOf(socket);
+        // clientArray.splice(removeIndex, 1)
+        // console.log('disconnect')
+        // console.log(clientArray.length);
     });
 });
 // print error message
@@ -31,13 +37,6 @@ server.on('error', function (err) {
 server.listen(port, function () {
     console.log('listening on' + port);
 });
-
-// const fs = require('fs').promises;
-
-// async function returnImage(imageURL){
-//     var file = await fs.readFile(imageURL)
-//     return file
-// }
 
 // const client = new net.Socket();
 

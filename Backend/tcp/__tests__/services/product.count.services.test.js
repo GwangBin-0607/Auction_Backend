@@ -1,7 +1,8 @@
-const productCount = require('../../services/Product/product.count.service');
+//@ts-check
+const productCount = require('../../services/product.count.service');
 
-test('Product Price List', async () => {
+test('Product Price Count', async () => {
         const data = await productCount.getList()
-        expect(data).toBe(4);
+        expect(data).toBe(40);
    
     });

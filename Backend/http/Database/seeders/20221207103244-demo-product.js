@@ -4,7 +4,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Products',[{
       product_id:1,
-      product_name:"test",
+      product_name:"Nike Shose",
       product_price:3000
     }]);
   },

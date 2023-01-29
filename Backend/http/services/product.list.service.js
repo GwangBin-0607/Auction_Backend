@@ -1,6 +1,14 @@
+//@ts-check
 const {products,product_images,product_prices} = require('../Database/models');
 
-async function allProductList(){
+/**
+ * 
+ * @param {number} offset 
+ * @param {number} limit 
+ * @returns 
+ */
+async function allProductList(offset,limit){
+  let startIndex = offset*limit;
   const result = await products.findAll({
     include:[
       {
@@ -11,6 +19,8 @@ async function allProductList(){
         model:product_prices
       }
     ],
+    offset:startIndex,
+    limit:limit,
     order:[['product_id','ASC'],[product_images,'priority','ASC']]
   });
   return result

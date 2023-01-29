@@ -33,6 +33,7 @@ Object.keys(db).forEach(modelName => {
 });
 db.product_prices = db['Product_Price'];
 db.products = db['Product'];
+db.product_updowns = db['Product_UpDown'];
 // sequelize
 //   .sync({ force: false})
 //   .then(() => {
