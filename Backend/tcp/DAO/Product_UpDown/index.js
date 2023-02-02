@@ -1,15 +1,11 @@
 //@ts-check
 const { product_updowns } = require('../../Database/models');
-/**
- * @typedef {Object} Product_UpDown
- * @property {number} product_id
- * @property {Boolean} state
- */
+const {DTO_Product_UpDown} = require('../../DTO/DTO_Product_UpDown')
 class Product_UpDown_DAO {
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<Product_UpDown>}
+     * @returns {Promise<DTO_Product_UpDown|null>}
      * @throws {Error}
      */
     async findProductUpDown(product_id) {

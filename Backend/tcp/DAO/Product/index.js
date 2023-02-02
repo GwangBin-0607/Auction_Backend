@@ -11,6 +11,15 @@ class Product_DAO {
     }
     /**
      * 
+     * @returns {Promise<Array<any>>}
+     */
+    async allProductId(){
+        return await products.findAll({
+            attributes:['product_id']
+        })
+    }
+    /**
+     * 
      * @param {number} product_id 
      */
     async productFindOne(product_id) {

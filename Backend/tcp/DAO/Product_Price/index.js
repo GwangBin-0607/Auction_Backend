@@ -5,7 +5,7 @@ const {DTO_Product_Price} = require('../../DTO/DTO_Product_Price');
 class Product_Price_DAO {
     /**
      * 
-     * @returns {Promise<DTO_Product_Price>}
+     * @returns {Promise<Array<DTO_Product_Price>>}
      */
     async allProductPriceList() {
         return await product_prices.findAll()
@@ -13,7 +13,7 @@ class Product_Price_DAO {
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<DTO_Product_Price>}
+     * @returns {Promise<DTO_Product_Price|null>}
      * @throws
      */
     async findProductPriceRecent(product_id) {

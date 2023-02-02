@@ -1,5 +1,9 @@
 //@ts-check
 class DTO_RequestUpdateSocketStatus{
+    /**
+     * 
+     * @param {number} stateNumber 
+     */
     constructor(stateNumber){
         this.stateNumber = stateNumber
     }

@@ -1,6 +1,6 @@
 //@ts-check
 const net = require('net');
-const { DTO_InputData } = require('../DTO/DTO_InputData');
+const { DTO_InputData } = require('../../DTO/DTO_InputData');
 class FakeSocketClient{
     constructor(){
         this.client = new net.Socket();

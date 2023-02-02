@@ -17,25 +17,20 @@ class StreamProductPriceUpdateService{
  * @returns {Promise<Boolean>}
  * @private
  */
-async  productPriceUpdate(streamProductPrice) {
+async productPriceUpdate(streamProductPrice) {
     try {
       let product = await this.product_price_dao.findProductPriceRecent(streamProductPrice.product_id);
-      if (this.updatable(product.price, streamProductPrice.product_price)) {
+      if (product != null&&this.updatable(product.price, streamProductPrice.product_price)) {
         let dto = new DTO_Product_Price(streamProductPrice.product_id,streamProductPrice.product_price,getToday());
-        if (product.auction_date == getToday()) {
-          console.log("update!")
+        if (product?.auction_date == getToday()) {
           return await this.product_price_dao.updateProduct_Price(dto);
         } else {
-          console.log("insert")
           return await this.product_price_dao.insertProduct_Price(dto);
         }
       } else {
-        console.log(false);
         return false
       }
     } catch(error) {
-      console.log(error);
-      console.log("catch!");
       return false
     }
   }
@@ -45,7 +40,7 @@ async  productPriceUpdate(streamProductPrice) {
    * @returns {Promise<Boolean>}
    * @private
    */
-  async  update(streamProductPrice) {
+  async update(streamProductPrice) {
   
     let updateResult = await this.productPriceUpdate(streamProductPrice);
     if (updateResult) {
@@ -59,18 +54,22 @@ async  productPriceUpdate(streamProductPrice) {
    * @param {DTO_RequestUpdateStreamProductPrice} streamProductPrice
    * @returns {Promise<DTO_ResponseUpdateStreamProductPrice>}
    */
-  async  updateProductPrice(streamProductPrice) {
+  async updateProductPrice(streamProductPrice) {
     return new DTO_ResponseUpdateStreamProductPrice(streamProductPrice.product_id,await this.update(streamProductPrice));
   }
   /**
    * 
    * @param {number} product_id 
-   * @returns {Promise<DTO_OutputStreamProductPrice>}
+   * @returns {Promise<DTO_OutputStreamProductPrice|null>}
    */
   async findProductUpdownState(product_id){
     let price = await this.product_price_dao.findProductPriceRecent(product_id);
     let state = await this.product_updown_dao.findProductUpDown(product_id);
-    return new DTO_OutputStreamProductPrice(product_id,price.price,state.state);
+    if(price != null && state != null){
+      return new DTO_OutputStreamProductPrice(product_id,price.price,state.state,price.auction_date);
+    }else{
+      return null
+    }
   }
   
   /**

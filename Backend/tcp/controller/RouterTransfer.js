@@ -4,13 +4,13 @@ const {DTO_RequestUpdateSocketStatus} = require('../DTO/DTO_RequestUpdateSocketS
 const {DTO_RequestUpdateStreamProductPrice} = require('../DTO/DTO_RequestUpdateStreamProductPrice');
 const {DTO_InputDataType} = require('../DTO/DTO_DataType');
 
-class ControllerTransfer {
+class RouterTransfer {
 
 /**
  * @param {Buffer} data 
  * @returns {Array<DTO_InputData>}
  */
-    dataToCompletion(data) {
+    convertData(data) {
         const splitData = data.toString().split('/')
         /**
          * @type {Array<DTO_InputData>}
@@ -37,7 +37,7 @@ class ControllerTransfer {
      */
     mappingData(data) {
         let completionId = this.returncompletionId(data.completionId);
-        let inputType = this.dataTypeCheck(data.inputType);
+        let inputType = this.dataTypeCheck(data.dataType);
         switch (inputType) {
             case DTO_InputDataType.StreamProductPriceUpdate:
                 /** @type {DTO_RequestUpdateStreamProductPrice} */
@@ -109,4 +109,4 @@ class ControllerTransfer {
         }
     }
 }
-module.exports.ControllerTransfer = ControllerTransfer
+module.exports.RouterTransfer = RouterTransfer

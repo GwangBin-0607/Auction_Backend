@@ -5,11 +5,11 @@ class DTO_InputData{
  * 
  * @param {number} completionId 
  * @param {DTO_InputDataType} inputType 
- * @param {any} data 
+ * @param {any} data RequestUpdateStreamProductPrice OR RequestUpdateSocketStatus
  */
     constructor(completionId,inputType,data){
          this.completionId = completionId
-         this.inputType = inputType
+         this.dataType = inputType
          this.data = data
     }
 }

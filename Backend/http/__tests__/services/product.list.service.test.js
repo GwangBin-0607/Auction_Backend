@@ -7,6 +7,6 @@ test('Product Price List', async () => {
   // const data = usecase.getList()
   // await expect(usecase.getList().count).resolves.toBe(5);
   const data = await usecase.getList(0,10)
-  console.log(data[0].dataValues);
+  console.log(data[0].Product_Prices);
   expect(data.length).toBe(3);
   });
