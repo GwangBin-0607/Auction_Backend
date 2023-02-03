@@ -81,7 +81,6 @@ class SocketStatusService {
         const allProduct_id = (await this.productDao.allProductId()).map(each=>each.product_id);
         const index = allProduct_id.indexOf(product_id)+1;
         const group = Math.ceil(index / this.showProductByPage);
-        console.log(group);
         /** @type {Array<DTO_SocketStatus>} */
         let resultSocketStatus = []
         for (let socketStatus of this.sockets) {

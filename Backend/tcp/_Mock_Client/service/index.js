@@ -20,7 +20,6 @@ class UpdateStreamProductPriceService {
         let product_id_list = (await this.product_DAO.allProductId()).map(each => each.product_id);
         let product_all_count = await this.product_DAO.allProductCount();
         let randomProductId = this.randomNumber.randomProductIdList(product_id_list, product_all_count)
-        console.log(randomProductId);
         /** @type {Array<DTO_InputData>} */
         let resultDTO_InputData = new Array()
         for(let productId of randomProductId){
