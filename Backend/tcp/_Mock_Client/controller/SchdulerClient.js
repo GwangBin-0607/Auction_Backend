@@ -29,7 +29,7 @@ class SchedulerClient{
             if (test_Singleton.test_isEnableStreaming()){
                 this.update();
             }else{
-                console.log("No Connect Other Socket")
+                
             }
         },5000)
     }
