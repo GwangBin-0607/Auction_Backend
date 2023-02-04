@@ -1,6 +1,7 @@
 //@ts-check
-const {Product_UpDown_DAO} = require('../DAO/Product_UpDown')
+const {Product_UpDown_DAO} = require('../DAO/Product_UpDown');
 const {Product_Price_DAO} = require('../DAO/Product_Price');
+const {Product_DAO} = require('../DAO/Product');
 const { DTO_RequestUpdateStreamProductPrice } = require('../DTO/DTO_RequestUpdateStreamProductPrice');
 const { getToday } = require('../time');
 const {DTO_ResponseUpdateStreamProductPrice} = require('../DTO/DTO_ResponseUpdateStreamProductPrice');
@@ -11,6 +12,7 @@ class StreamProductPriceUpdateService{
     constructor(){
         this.product_updown_dao = new Product_UpDown_DAO();
         this.product_price_dao = new Product_Price_DAO();
+        this.product_dao = new Product_DAO();
     }
     /**
  * @param {DTO_RequestUpdateStreamProductPrice} streamProductPrice
@@ -63,10 +65,17 @@ async productPriceUpdate(streamProductPrice) {
    * @returns {Promise<DTO_OutputStreamProductPrice|null>}
    */
   async findProductUpdownState(product_id){
-    let price = await this.product_price_dao.findProductPriceRecent(product_id);
+    let product = await this.product_dao.productFindOne(product_id);
+    let price = await this.product_price_dao.findProductPriceRecentBeforePrice(product_id);
     let state = await this.product_updown_dao.findProductUpDown(product_id);
     if(price != null && state != null){
-      return new DTO_OutputStreamProductPrice(product_id,price.price,state.state,price.auction_date);
+      if (price.length == 1){
+        let gap = price[0].price-product.product_price
+        return new DTO_OutputStreamProductPrice(product_id,price[0].price,state.state,price[0].auction_date,gap);
+      }else{
+        let gap = price[0].price - price[1].price
+        return new DTO_OutputStreamProductPrice(product_id,price[0].price,state.state,price[0].auction_date,gap);
+      }
     }else{
       return null
     }

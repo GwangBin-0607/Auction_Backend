@@ -22,6 +22,19 @@ class Product_Price_DAO {
             order: [['auction_date', 'DESC']]
         });
     }
+        /**
+     * 
+     * @param {number} product_id 
+     * @returns {Promise<Array<DTO_Product_Price>>}
+     * @throws
+     */
+        async findProductPriceRecentBeforePrice(product_id) {
+          return await product_prices.findAll({
+              where: { product_id: product_id },
+              order: [['auction_date', 'DESC']],
+              limit:2
+          });
+      }
     /**
     * 
     * @param {DTO_Product_Price} streamProductPrice

@@ -14,7 +14,7 @@ const usecase = require('../services/product.list.service');
  */
 module.exports = async (req, res, next) => {
     try {
-        var result = await usecase.getList(req.body.index,15);
+        var result = await usecase.beforePriceList(req.body.index,15);
         if (result.length == 0){
             console.log("201")
             res.status(201).end();

@@ -1,6 +1,7 @@
 //@ts-check
 const { products } = require('../../Database/models');
 const { Sequelize } = require('sequelize');
+const { DTO_Product } = require('../../Dto/DTO_Product');
 class Product_DAO {
     /**
      * 
@@ -21,6 +22,7 @@ class Product_DAO {
     /**
      * 
      * @param {number} product_id 
+     * @returns {Promise<DTO_Product>}
      */
     async productFindOne(product_id) {
         let returnProduct = await products.findOne({
