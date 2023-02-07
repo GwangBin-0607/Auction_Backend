@@ -3,13 +3,13 @@
 const net = require('net');
 const { DTO_SocketStatus } = require('../DTO/DTO_SocketStatus');
 const { DTO_RequestUpdateSocketStatus } = require('../DTO/DTO_RequestUpdateSocketStatus');
-const { Product_DAO } = require('../DAO/Product/index');
+const { Product_Repository } = require('../Repository/Product');
 class SocketStatusService {
     constructor() {
         /** @type {Array<DTO_SocketStatus>} */
         this.sockets = []
         this.showProductByPage = 15;
-        this.productDao = new Product_DAO()
+        this.productDao = new Product_Repository()
     }
     /**
      * 

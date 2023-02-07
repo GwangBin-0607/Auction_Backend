@@ -39,7 +39,8 @@ class RandomProduct{
         let setValue = new Set()
         let randomCount = this.getRandomInt(1,this.limit)
         for(let i=0;i<randomCount;i++){
-            let randomNumber = this.getRandomInt(1,productListCount)
+            let randomNumber = this.getRandomInt(0,5)
+            // let randomNumber = this.getRandomInt(0,productListCount)
             setValue.add(randomNumber)
         }
         return Array.from(setValue)

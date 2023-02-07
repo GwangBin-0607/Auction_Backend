@@ -1,17 +1,17 @@
 //@ts-check
 const { DTO_InputData } = require("../../DTO/DTO_InputData");
 const { DTO_RequestUpdateStreamProductPrice } = require("../../DTO/DTO_RequestUpdateStreamProductPrice");
-const { Product_Price_DAO } = require('../../DAO/Product_Price');
-const { DTO_Product_Price } = require("../../DTO/DTO_Product_Price");
+const { Product_Price_Repository } = require('../../Repository/Product_Price');
+const { DAO_Product_Price } = require("../../Repository/DAO/DAO_Product_Price");
 const { RandomProduct } = require('./RandomProduct')
-const { Product_DAO } = require("../../DAO/Product");
+const { Product_Repository } = require("../../Repository/Product");
 //@ts-check
 class UpdateStreamProductPriceService {
     constructor() {
         this.completionId = 0;
-        this.product_price_DAO = new Product_Price_DAO();
+        this.product_price_DAO = new Product_Price_Repository();
         this.randomNumber = new RandomProduct(5);
-        this.product_DAO = new Product_DAO();
+        this.product_DAO = new Product_Repository();
     }
     /**
      * @returns {Promise<Array<DTO_InputData>>}
@@ -23,7 +23,7 @@ class UpdateStreamProductPriceService {
         /** @type {Array<DTO_InputData>} */
         let resultDTO_InputData = new Array()
         for(let productId of randomProductId){
-            /**@type {DTO_Product_Price|null} */
+            /**@type {DAO_Product_Price|null} */
             const product = await this.product_price_DAO.findProductPriceRecent(productId)
             if (product != null) {
                 const updateProductPrice = product.price + 500

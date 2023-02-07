@@ -1,18 +1,18 @@
 //@ts-check
-const {Product_UpDown_DAO} = require('../DAO/Product_UpDown');
-const {Product_Price_DAO} = require('../DAO/Product_Price');
-const {Product_DAO} = require('../DAO/Product');
+const {Product_UpDown_Repository} = require('../Repository//Product_UpDown');
+const {Product_Price_Repository} = require('../Repository/Product_Price');
+const {Product_Repository} = require('../Repository/Product');
 const { DTO_RequestUpdateStreamProductPrice } = require('../DTO/DTO_RequestUpdateStreamProductPrice');
 const { getToday } = require('../time');
 const {DTO_ResponseUpdateStreamProductPrice} = require('../DTO/DTO_ResponseUpdateStreamProductPrice');
-const {DTO_Product_Price} = require('../DTO/DTO_Product_Price')
+const {DAO_Product_Price} = require('../Repository/DAO/DAO_Product_Price')
 const {DTO_OutputStreamProductPrice} = require('../DTO/DTO_OutputStreamProductPrice')
 
 class StreamProductPriceUpdateService{
     constructor(){
-        this.product_updown_dao = new Product_UpDown_DAO();
-        this.product_price_dao = new Product_Price_DAO();
-        this.product_dao = new Product_DAO();
+        this.product_updown_dao = new Product_UpDown_Repository();
+        this.product_price_dao = new Product_Price_Repository();
+        this.product_dao = new Product_Repository();
     }
     /**
  * @param {DTO_RequestUpdateStreamProductPrice} streamProductPrice
@@ -23,7 +23,7 @@ async productPriceUpdate(streamProductPrice) {
     try {
       let product = await this.product_price_dao.findProductPriceRecent(streamProductPrice.product_id);
       if (product != null&&this.updatable(product.price, streamProductPrice.product_price)) {
-        let dto = new DTO_Product_Price(streamProductPrice.product_id,streamProductPrice.product_price,getToday());
+        let dto = new DAO_Product_Price(streamProductPrice.product_id,streamProductPrice.product_price,getToday());
         if (product?.auction_date == getToday()) {
           return await this.product_price_dao.updateProduct_Price(dto);
         } else {
@@ -75,8 +75,11 @@ async productPriceUpdate(streamProductPrice) {
       }else{
         let gap;
         if(price[0].auction_date == getToday()){
+          console.log("1")
           gap = price[0].price - price[1].price
+          console.log(gap)
         }else{
+          console.log("2")
           gap = 0
         }
         return new DTO_OutputStreamProductPrice(product_id,price[0].price,state.state,price[0].auction_date,gap);

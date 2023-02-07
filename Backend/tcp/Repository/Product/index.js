@@ -1,8 +1,8 @@
 //@ts-check
 const { products } = require('../../Database/models');
 const { Sequelize } = require('sequelize');
-const { DTO_Product } = require('../../DTO/DTO_Product');
-class Product_DAO {
+const { DAO_Product } = require('../DAO/DAO_Product');
+class Product_Repository {
     /**
      * 
      * @returns {Promise<number>}
@@ -22,7 +22,7 @@ class Product_DAO {
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<DTO_Product>}
+     * @returns {Promise<DAO_Product>}
      */
     async productFindOne(product_id) {
         let returnProduct = await products.findOne({
@@ -31,4 +31,4 @@ class Product_DAO {
         return returnProduct
     }
 }
-exports.Product_DAO = Product_DAO;
+exports.Product_Repository = Product_Repository;

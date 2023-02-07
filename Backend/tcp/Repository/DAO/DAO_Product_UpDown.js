@@ -1,5 +1,5 @@
 //@ts-check
-class DTO_Product_UpDown{
+class DAO_Product_UpDown{
     /**
      * 
      * @param {number} product_id 
@@ -10,4 +10,4 @@ class DTO_Product_UpDown{
         this.state = state
     }
 }
-exports.DTO_Product_UpDown = DTO_Product_UpDown
+exports.DAO_Product_UpDown = DAO_Product_UpDown

@@ -1,11 +1,11 @@
 //@ts-check
 const { product_updowns } = require('../../Database/models');
-const {DTO_Product_UpDown} = require('../../DTO/DTO_Product_UpDown')
-class Product_UpDown_DAO {
+const {DAO_Product_UpDown} = require('../DAO/DAO_Product_UpDown')
+class Product_UpDown_Repository {
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<DTO_Product_UpDown|null>}
+     * @returns {Promise<DAO_Product_UpDown|null>}
      * @throws {Error}
      */
     async findProductUpDown(product_id) {
@@ -26,4 +26,4 @@ class Product_UpDown_DAO {
         })
     }
 }
-exports.Product_UpDown_DAO = Product_UpDown_DAO
+exports.Product_UpDown_Repository = Product_UpDown_Repository

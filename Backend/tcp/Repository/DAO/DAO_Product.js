@@ -1,5 +1,5 @@
 //@ts-check
-class DTO_Product{
+class DAO_Product{
     /**
      * 
      * @param {number} product_id 
@@ -12,4 +12,4 @@ class DTO_Product{
         this.product_price = product_price
     }
 }
-exports.DTO_Product = DTO_Product
+exports.DAO_Product = DAO_Product

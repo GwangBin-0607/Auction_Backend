@@ -1,11 +1,11 @@
 //@ts-check
 const { product_prices } = require('../../Database/models');
-const {DTO_Product_Price} = require('../../DTO/DTO_Product_Price');
+const {DAO_Product_Price} = require('../DAO/DAO_Product_Price');
 
-class Product_Price_DAO {
+class Product_Price_Repository {
     /**
      * 
-     * @returns {Promise<Array<DTO_Product_Price>>}
+     * @returns {Promise<Array<DAO_Product_Price>>}
      */
     async allProductPriceList() {
         return await product_prices.findAll()
@@ -13,7 +13,7 @@ class Product_Price_DAO {
     /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<DTO_Product_Price|null>}
+     * @returns {Promise<DAO_Product_Price|null>}
      * @throws
      */
     async findProductPriceRecent(product_id) {
@@ -25,7 +25,7 @@ class Product_Price_DAO {
         /**
      * 
      * @param {number} product_id 
-     * @returns {Promise<Array<DTO_Product_Price>>}
+     * @returns {Promise<Array<DAO_Product_Price>>}
      * @throws
      */
         async findProductPriceRecentBeforePrice(product_id) {
@@ -37,7 +37,7 @@ class Product_Price_DAO {
       }
     /**
     * 
-    * @param {DTO_Product_Price} streamProductPrice
+    * @param {DAO_Product_Price} streamProductPrice
     * @throws
     * @returns {Promise<Boolean>}
     */
@@ -55,7 +55,7 @@ class Product_Price_DAO {
     }
     /**
     * 
-    * @param {DTO_Product_Price} streamProductPrice
+    * @param {DAO_Product_Price} streamProductPrice
     * @returns {Promise<Boolean>} [0] => No Update, [count] => Product updated as many as count
     */
     async updateProduct_Price(streamProductPrice) {
@@ -72,4 +72,4 @@ class Product_Price_DAO {
     }
 
 }
-module.exports.Product_Price_DAO = Product_Price_DAO
+module.exports.Product_Price_Repository = Product_Price_Repository
