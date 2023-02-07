@@ -3,7 +3,6 @@ const {getAllProductList} = require('./product.list')
 const {product_prices,product_updowns} = require('../Database/models');
 
 async function insertProduct_UpDown(){
-    try{
         let allList = await getAllProductList()
         for(let i=0;i<allList.length;i++){
             await product_prices.create({
@@ -15,9 +14,6 @@ async function insertProduct_UpDown(){
                 product_id:allList[i].dataValues.product_id
             })
         }
-    }catch{
-
-    }
 
 }
 function mockInsertYesterday(){

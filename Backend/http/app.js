@@ -3,11 +3,14 @@ var app = require('express')();
 const routes = require('./routes');
 const bodyParser = require('body-parser');
 const mockData = require('./MockData/insertMockData');
-try{
-    mockData.insertProduct_UpDown()
-}catch(e){
-    console.log(e);
-}
+(async function(){
+    try{
+        await mockData.insertProduct_UpDown()
+    }catch(e){
+        console.log("Error");
+    }
+})();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));

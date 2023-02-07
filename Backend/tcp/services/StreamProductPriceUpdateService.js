@@ -73,7 +73,12 @@ async productPriceUpdate(streamProductPrice) {
         let gap = price[0].price-product.product_price
         return new DTO_OutputStreamProductPrice(product_id,price[0].price,state.state,price[0].auction_date,gap);
       }else{
-        let gap = price[0].price - price[1].price
+        let gap;
+        if(price[0].auction_date == getToday()){
+          gap = price[0].price - price[1].price
+        }else{
+          gap = 0
+        }
         return new DTO_OutputStreamProductPrice(product_id,price[0].price,state.state,price[0].auction_date,gap);
       }
     }else{
