@@ -6,19 +6,6 @@ const {Controller} = require('./controller');
 const serviceClass = new Controller();
 const {SchedulerClient} = require('./_Mock_Client/controller/SchdulerClient')
 const schedulerClient = new SchedulerClient();
-function one(){
-    console.log("One")
-    throw Error("ONE");
-}
-function two(){
-    console.log("Two")
-    one();
-}
-try {
-    two()
-} catch (error) {
-    
-}
 let server = net.createServer(async function (socket) {
     socket.setEncoding('utf8');
     console.log(`${socket.address} Connect!!!!!!`);

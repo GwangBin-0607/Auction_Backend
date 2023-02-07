@@ -1,7 +1,7 @@
 //@ts-check
 const { products } = require('../../Database/models');
 const { Sequelize } = require('sequelize');
-const { DTO_Product } = require('../../Dto/DTO_Product');
+const { DTO_Product } = require('../../DTO/DTO_Product');
 class Product_DAO {
     /**
      * 
