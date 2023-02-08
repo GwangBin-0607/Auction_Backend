@@ -1,26 +1,26 @@
 // @ts-check
-const {DTO_InputData} = require('../DTO/DTO_InputData');
-const {DTO_RequestUpdateSocketStatus} = require('../DTO/DTO_RequestUpdateSocketStatus');
-const {DTO_RequestUpdateStreamProductPrice} = require('../DTO/DTO_RequestUpdateStreamProductPrice');
-const {DTO_InputDataType} = require('../DTO/DTO_DataType');
+const { DTO_InputData } = require('../DTO/DTO_InputData');
+const { DTO_RequestUpdateSocketStatus } = require('../DTO/DTO_RequestUpdateSocketStatus');
+const { DTO_RequestUpdateStreamProductPrice } = require('../DTO/DTO_RequestUpdateStreamProductPrice');
+const { DTO_InputDataType } = require('../DTO/DTO_DataType');
 
 class RouterTransfer {
 
-/**
- * @param {Buffer} data 
- * @returns {Array<DTO_InputData>}
- */
+    /**
+     * @param {Buffer} data 
+     * @returns {Array<DTO_InputData>}
+     */
     convertData(data) {
         const splitData = data.toString().split('/')
         /**
          * @type {Array<DTO_InputData>}
          */
         let returnData = []
-        for(let each of splitData){
+        for (let each of splitData) {
             if (each != '') {
-                /** @type {DTO_InputData} */
-                let parse = JSON.parse(each);
                 try {
+                    /** @type {DTO_InputData} */
+                    let parse = JSON.parse(each);
                     returnData.push(this.mappingData(parse))
                 } catch (error) {
                     console.log(error);
@@ -43,12 +43,12 @@ class RouterTransfer {
                 /** @type {DTO_RequestUpdateStreamProductPrice} */
                 let streamProductPrice = data.data
                 let resultProductPrice = this.returnStreamProductPrice(streamProductPrice);
-                return new DTO_InputData(completionId,inputType,resultProductPrice);
+                return new DTO_InputData(completionId, inputType, resultProductPrice);
             case DTO_InputDataType.SocketStatusUpdate:
                 /** @type {DTO_RequestUpdateSocketStatus} */
                 let streamStateUpdate = data.data
                 let resultStreamStateUpdate = this.returnStreamStateUpdate(streamStateUpdate);
-                return new DTO_InputData(completionId,inputType,resultStreamStateUpdate);
+                return new DTO_InputData(completionId, inputType, resultStreamStateUpdate);
         }
         throw Error("Not Data");
     }
