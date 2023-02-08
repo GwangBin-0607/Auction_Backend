@@ -8,7 +8,7 @@ const {SchedulerClient} = require('./_Mock_Client/controller/SchdulerClient')
 const schedulerClient = new SchedulerClient();
 let server = net.createServer(async function (socket) {
     socket.setEncoding('utf8');
-    console.log(`${socket.address} Connect!!!!!!`);
+    console.log(socket.localAddress+" Connect!!!!!!");
     serviceClass.connect(socket);
     socket.on('data', async function (data) {
         serviceClass.inputData(socket,data);
