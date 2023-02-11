@@ -6,7 +6,10 @@ const { DTO_RequestUpdateSocketStatus } = require('../DTO/DTO_RequestUpdateSocke
 const { Product_Repository } = require('../Repository/Product');
 class SocketStatusService {
     constructor() {
-        /** @type {Array<DTO_SocketStatus>} */
+        /** 
+         * @type {Array<DTO_SocketStatus>} 
+         * @private
+         * */
         this.sockets = []
         this.showProductByPage = 15;
         this.productDao = new Product_Repository()

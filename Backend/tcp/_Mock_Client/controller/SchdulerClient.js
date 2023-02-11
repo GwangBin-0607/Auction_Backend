@@ -8,12 +8,8 @@ class SchedulerClient{
     constructor(){
         this.client = new net.Socket();
         this.Host = "127.0.0.1"
-        this.connectServer();
         this.updateStreamProductPriceService = new UpdateStreamProductPriceService();
     }
-    /**
-     * @private
-     */
     connectServer(){
         this.client.connect(3200, this.Host, async () => {
             this.client.setEncoding('utf8');
@@ -24,6 +20,9 @@ class SchedulerClient{
             console.log(data);
         });
     }
+    /**
+     * @private
+     */
     setScheduler(){
         setInterval(()=>{
             if (test_Singleton.test_isEnableStreaming()){

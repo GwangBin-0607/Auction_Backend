@@ -69,7 +69,12 @@ class Controller {
      * @private
      */
     writeSocket(socket, data) {
-        socket.write(JSON.stringify(data) + '/');
+        try {
+            socket.write(JSON.stringify(data) + '/');
+        } catch (error) {
+            console.log("Write Error");
+            console.log(error);
+        }
     }
     /**
      * @param {number} product_id
