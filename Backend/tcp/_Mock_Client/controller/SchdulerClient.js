@@ -1,7 +1,7 @@
 //@ts-check
 const { DTO_InputData } = require('../../DTO/DTO_InputData');
 const net = require('net');
-const {UpdateStreamProductPriceService} = require('../service/index')
+const {UpdateStreamProductPriceService} = require('../service')
 const {test_Singleton} = require('../../services/SocketStatusService')
 
 class SchedulerClient{
@@ -30,7 +30,7 @@ class SchedulerClient{
             }else{
                 
             }
-        },5000)
+        },1000)
     }
     /**
      * @param {DTO_InputData} data 
