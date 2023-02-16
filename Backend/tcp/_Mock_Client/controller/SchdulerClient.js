@@ -30,7 +30,7 @@ class SchedulerClient{
             }else{
                 
             }
-        },8000)
+        },4000)
     }
     /**
      * @param {DTO_InputData} data 
