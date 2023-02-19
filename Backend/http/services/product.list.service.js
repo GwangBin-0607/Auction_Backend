@@ -50,6 +50,7 @@ async function allProductList(offset,limit){
   return resultArray
 }
 
+
 /**
  * 
  * @param {number} offset 
