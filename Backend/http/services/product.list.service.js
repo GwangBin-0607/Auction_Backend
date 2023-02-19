@@ -18,8 +18,7 @@ async function allProductList(offset,limit){
     include:[
       {
         model:product_images,
-        order:[['main_image','DESC']],
-        attributes:['image_url']
+        attributes:['image_id']
       },{
         model:product_prices,
         order:[['auction_date','DESC']],
@@ -41,7 +40,7 @@ async function allProductList(offset,limit){
   for(let product of result){
     let product_images = []
     for (let images of product.Product_Images){
-      product_images.push(new DTO_Product_Images(images.image_url))
+      product_images.push(new DTO_Product_Images(images.image_id))
     }
     let product_updown = new DTO_Product_UpDown(product.Product_UpDown.state)
     let product_price = new DTO_Product_Price(product.Product_Prices[0].auction_date,product.Product_Prices[0].price)
@@ -63,8 +62,7 @@ async function allProductListBeforePrice(offset,limit){
     include:[
       {
         model:product_images,
-        order:[['main_image','DESC']],
-        attributes:['image_url']
+        attributes:['image_id']
       },{
         model:product_prices,
         order:[['auction_date','DESC']],
@@ -86,7 +84,7 @@ async function allProductListBeforePrice(offset,limit){
   for(let product of result){
     let product_images = []
     for (let images of product.Product_Images){
-      product_images.push(new DTO_Product_Images(images.image_url))
+      product_images.push(new DTO_Product_Images(images.image_id))
     }
     let product_updown = new DTO_Product_UpDown(product.Product_UpDown.state)
     /**@type {DTO_Product_Price_BeforePrice} */

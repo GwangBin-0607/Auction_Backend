@@ -5,12 +5,16 @@ module.exports = {
     await queryInterface.createTable('Product_Images', {
       image_url: {
         allowNull: false,
-        primaryKey: true,
         type: Sequelize.STRING
       },
       product_id:{
         allowNull: false,
         type: Sequelize.INTEGER
+      },
+      image_id:{
+        type: Sequelize.INTEGER,
+        primaryKey:true,
+        autoIncrement: true
       }
     });
   },

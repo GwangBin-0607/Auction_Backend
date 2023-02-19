@@ -8,10 +8,10 @@
 class DTO_Product_Images{
     /**
      * 
-     * @param {String} url 
+     * @param {String} image_id 
      */
-    constructor(url){
-      this.url = url
+    constructor(image_id){
+      this.image_id = image_id
     }
   }
   module.exports.DTO_Product_Images = DTO_Product_Images;

@@ -15,8 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Product_Image.init({
     image_url:{
-      type:DataTypes.STRING,
-      primaryKey:true
+      type:DataTypes.STRING
+    },
+    image_id:{
+      type:DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
     },
     product_id:DataTypes.INTEGER,
     priority:DataTypes.INTEGER
