@@ -35,6 +35,9 @@ db.products = db['Product'];
 db.product_images = db['Product_Image'];
 db.product_prices = db['Product_Price'];
 db.product_updowns = db['Product_UpDown'];
+db.images = db['Image'];
+db.users = db['User'];
+db.user_images = db['User_Image'];
 // sequelize
 //   .sync({ force: false})
 //   .then(() => {

@@ -6,7 +6,8 @@ module.exports = {
       product_id:23,
       product_name:"Pants",
       product_price:3000,
-      comment:"나이키 신발 판매!"
+      comment:"나이키 신발 판매!",
+      user_id:1
     }]);
   },
 

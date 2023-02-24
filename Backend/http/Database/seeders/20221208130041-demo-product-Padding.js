@@ -6,7 +6,8 @@ module.exports = {
       product_id:3,
       product_name:"NorthfacePadding",
       product_price:45000,
-      comment:"나이키 신발 판매!"
+      comment:"나이키 신발 판매!",
+      user_id:1
     }]);
   },
 

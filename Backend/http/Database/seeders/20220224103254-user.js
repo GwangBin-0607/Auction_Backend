@@ -1,14 +1,16 @@
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.addColumn('Product_Images','priority',{
-      type:Sequelize.INTEGER
-    })
+    await queryInterface.bulkInsert('Users',[{
+      user_id:1,
+      user_name:"Admin"
+    }]);
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.removeColumn('Product_Images','main_image')
+    await queryInterface.bulkDelete('Users',{
+      user_id:1
+    })
   }
 };

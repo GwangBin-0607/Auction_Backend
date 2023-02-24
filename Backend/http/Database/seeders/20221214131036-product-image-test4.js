@@ -7,14 +7,14 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Product_Images',[{
       product_id:4,
-      image_url:come,
+      image_id:4,
       priority:1
     }]);
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Product_Images',{
-      product_id:1
+      product_id:4
     })
   }
 };

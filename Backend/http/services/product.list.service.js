@@ -1,5 +1,5 @@
 //@ts-check
-const {products,product_images,product_prices,product_updowns} = require('../Database/models');
+const {images,products,product_images,product_prices,product_updowns} = require('../Database/models');
 const { DTO_Product } = require('../DTO/DTO_Product');
 const { DTO_Product_BeforePrice } = require('../DTO/DTO_Product_BeforePrice');
 const { DTO_Product_Images } = require('../DTO/DTO_Product_Images');
@@ -64,7 +64,10 @@ async function allProductListBeforePrice(offset,limit){
     include:[
       {
         model:product_images,
-        attributes:['image_id']
+        include:{
+          model:images,
+          attributes:['image_id']
+        }
       },{
         model:product_prices,
         order:[['auction_date','DESC']],
@@ -85,7 +88,8 @@ async function allProductListBeforePrice(offset,limit){
   let resultArray = []
   for(let product of result){
     let product_images = []
-    for (let images of product.Images){
+    for (let images of product.Product_Images){
+      console.log(images.image_id)
       product_images.push(new DTO_Product_Images(images.image_id))
     }
     let product_updown = new DTO_Product_UpDown(product.Product_UpDown.state)
