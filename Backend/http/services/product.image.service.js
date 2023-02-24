@@ -1,5 +1,5 @@
 //@ts-check
-const {product_images} = require('../Database/models');
+const {images} = require('../Database/models');
 const {DAO_Product_Image} = require('../DAO/DAO_Product_Image');
 const fs = require('fs').promises;
 /**
@@ -20,9 +20,9 @@ async function imageIdToURL(image_id){
     /**
      * @type {DAO_Product_Image}
      */
-    let images = await product_images.findOne({
+    let returnImages = await images.findOne({
         where: { image_id: image_id }
     })
-    return await returnImage(images.image_url) 
+    return await returnImage(returnImages.image_url) 
 }
 exports.getImage = imageIdToURL

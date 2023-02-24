@@ -1,11 +1,12 @@
 //@ts-check
-const {products,product_images,product_prices,product_updowns} = require('../Database/models');
+const {products,images,product_prices,product_updowns} = require('../Database/models');
 const { DTO_Product } = require('../DTO/DTO_Product');
 const { DTO_Product_BeforePrice } = require('../DTO/DTO_Product_BeforePrice');
 const { DTO_Product_Images } = require('../DTO/DTO_Product_Images');
 const { DTO_Product_Price } = require('../DTO/DTO_Product_Price');
 const { DTO_Product_Price_BeforePrice } = require('../DTO/DTO_Product_Price_BeforePrice');
 const { DTO_Product_UpDown } = require('../DTO/DTO_Product_UpDown');
+const timeCheck = require('../time')
 /**
  * 
  * @param {number} offset 
@@ -17,7 +18,7 @@ async function allProductList(offset,limit){
   const result = await products.findAll({
     include:[
       {
-        model:product_images,
+        model:images,
         attributes:['image_id']
       },{
         model:product_prices,
@@ -31,7 +32,7 @@ async function allProductList(offset,limit){
     ],
     offset:startIndex,
     limit:limit,
-    order:[['product_id','ASC'],[product_images,'priority','ASC']]
+    order:[['product_id','ASC'],[images,'priority','ASC']]
   });
   /**
    * @type {Array<DTO_Product>}
@@ -62,7 +63,7 @@ async function allProductListBeforePrice(offset,limit){
   const result = await products.findAll({
     include:[
       {
-        model:product_images,
+        model:images,
         attributes:['image_id']
       },{
         model:product_prices,
@@ -76,7 +77,7 @@ async function allProductListBeforePrice(offset,limit){
     ],
     offset:startIndex,
     limit:limit,
-    order:[['product_id','ASC'],[product_images,'priority','ASC']]
+    order:[['product_id','ASC'],[images,'priority','ASC']]
   });
   /**
    * @type {Array<DTO_Product_BeforePrice>}
@@ -94,7 +95,10 @@ async function allProductListBeforePrice(offset,limit){
       let gap = product.Product_Prices[0].price - product.product_price
       product_price = new DTO_Product_Price_BeforePrice(product.Product_Prices[0].auction_date,product.Product_Prices[0].price,gap)
     }else{
-      let gap = product.Product_Prices[0].price - product.Product_Prices[1].price
+      let gap = 0
+      if(product.Product_Prices[0].auction_date == timeCheck.getToday()){
+        gap = product.Product_Prices[0].price - product.Product_Prices[1].price
+      }
       product_price = new DTO_Product_Price_BeforePrice(product.Product_Prices[0].auction_date,product.Product_Prices[0].price,gap)
     }
     resultArray.push( new DTO_Product_BeforePrice(product.product_id,product.product_name,product.product_price,product_images,product_updown,product_price))
