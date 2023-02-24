@@ -1,5 +1,5 @@
 //@ts-check
-const {products,images,product_prices,product_updowns} = require('../Database/models');
+const {products,product_images,product_prices,product_updowns} = require('../Database/models');
 const { DTO_Product } = require('../DTO/DTO_Product');
 const { DTO_Product_BeforePrice } = require('../DTO/DTO_Product_BeforePrice');
 const { DTO_Product_Images } = require('../DTO/DTO_Product_Images');
@@ -18,7 +18,7 @@ async function allProductList(offset,limit){
   const result = await products.findAll({
     include:[
       {
-        model:images,
+        model:product_images,
         attributes:['image_id']
       },{
         model:product_prices,
@@ -32,7 +32,7 @@ async function allProductList(offset,limit){
     ],
     offset:startIndex,
     limit:limit,
-    order:[['product_id','ASC'],[images,'priority','ASC']]
+    order:[['product_id','ASC'],[product_images,'priority','ASC']]
   });
   /**
    * @type {Array<DTO_Product>}
@@ -63,7 +63,7 @@ async function allProductListBeforePrice(offset,limit){
   const result = await products.findAll({
     include:[
       {
-        model:images,
+        model:product_images,
         attributes:['image_id']
       },{
         model:product_prices,
@@ -77,7 +77,7 @@ async function allProductListBeforePrice(offset,limit){
     ],
     offset:startIndex,
     limit:limit,
-    order:[['product_id','ASC'],[images,'priority','ASC']]
+    order:[['product_id','ASC'],[product_images,'priority','ASC']]
   });
   /**
    * @type {Array<DTO_Product_BeforePrice>}
@@ -85,7 +85,7 @@ async function allProductListBeforePrice(offset,limit){
   let resultArray = []
   for(let product of result){
     let product_images = []
-    for (let images of product.Product_Images){
+    for (let images of product.Images){
       product_images.push(new DTO_Product_Images(images.image_id))
     }
     let product_updown = new DTO_Product_UpDown(product.Product_UpDown.state)

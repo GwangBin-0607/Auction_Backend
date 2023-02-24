@@ -5,7 +5,7 @@ var appRoot = process.env.PWD;
 var come = path.resolve(appRoot, "../", "images", "northPadding.png");
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Images',[{
+    await queryInterface.bulkInsert('Product_Images',[{
       product_id:3,
       image_url:come,
       priority:1
@@ -13,7 +13,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Images',{
+    await queryInterface.bulkDelete('Product_Images',{
       product_id:1
     })
   }

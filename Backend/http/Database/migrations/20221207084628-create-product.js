@@ -16,6 +16,15 @@ module.exports = {
       product_price:{
         allowNull: false,
         type: Sequelize.INTEGER
+      },
+      registerTime:{
+        allowNull:false,
+        type:Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
+      },
+      comment:{
+        allowNull:false,
+        type:Sequelize.STRING
       }
     });
   },

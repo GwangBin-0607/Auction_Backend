@@ -5,7 +5,8 @@ module.exports = {
     await queryInterface.bulkInsert('Products',[{
       product_id:2,
       product_name:"NikeShoes",
-      product_price:30000
+      product_price:30000,
+      comment:"나이키 신발 판매!"
     }]);
   },
 
