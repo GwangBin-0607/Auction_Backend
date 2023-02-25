@@ -18,19 +18,28 @@ class DTO_Product_Detail{
         this.DetailProductGraph = detailProductGraph
     }
 }
+class DTO_CurrentProductPrice{
+    /**
+     * 
+     * @param {number} product_id 
+     * @param {number} beforePrice 
+     * @param {number} price 
+     * @param {DTO_Product_UpDown} checkUpDown 
+     */
+    constructor(product_id,beforePrice,price,checkUpDown){
+        this.product_id = product_id,
+        this.beforePrice = beforePrice,
+        this.price = price,
+        this.checkUpDown = checkUpDown
+    }
+}
 class DTO_Product_Detail_Info{
     /**
      * 
      * @param {number} product_id
-     * @param {number} original_price
-     * @param {DTO_Product_UpDown} checkUpDown 
-     * @param {number} beforePrice
      */
-    constructor(product_id,original_price,checkUpDown,beforePrice){
+    constructor(product_id){
         this.product_id = product_id
-        this.original_price = original_price
-        this.checkUpDown = checkUpDown
-        this.beforePrice = beforePrice
     }
 }
 class DTO_User{
@@ -69,12 +78,14 @@ class DTO_Comment{
      * 
      * @param {string} comment 
      * @param {string} registerTime 
-     * @param {string} product_name 
+     * @param {string} product_name
+     * @param {number} original_price 
      */
-    constructor(comment,registerTime,product_name){
+    constructor(comment,registerTime,product_name,original_price){
         this.registerTime = registerTime
         this.comment = comment
         this.product_name = product_name
+        this.original_price = original_price
     }
 }
 class DTO_Graph{
@@ -93,3 +104,4 @@ module.exports.DTO_Detail_Image = DTO_Detail_Image
 module.exports.DTO_Comment = DTO_Comment
 module.exports.DTO_Graph = DTO_Graph
 module.exports.DTO_Detail_Product_Images = DTO_Detail_Product_Images
+module.exports.DTO_CurrentProductPrice = DTO_CurrentProductPrice

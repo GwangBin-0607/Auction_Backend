@@ -16,4 +16,4 @@ module.exports = {
       image_id:4
     })
   }
-}
+};
