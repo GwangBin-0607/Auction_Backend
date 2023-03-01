@@ -20,8 +20,13 @@ function mockInsertYesterday(){
     var date = new Date();
     var year = date.getFullYear();
     var month = ("0" + (1 + date.getMonth())).slice(-2);
-    var day = ("0" + (date.getDate()-1)).slice(-2);
-  
+    var day = "0"
+    if (date.getDate() == 1){
+        day = "1"
+    }else{
+        day = ("0" + (date.getDate()-1)).slice(-2);
+    }
+    console.log(year + "-" + month + "-" + day)
     return year + "-" + month + "-" + day;
   }
 module.exports.insertProduct_UpDown = insertProduct_UpDown
