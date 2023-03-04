@@ -9,22 +9,22 @@ const { Product_Repository } = require("../../Repository/Product");
 class UpdateStreamProductPriceService {
     constructor() {
         this.completionId = 0;
-        this.product_price_DAO = new Product_Price_Repository();
+        this.product_price_Repository = new Product_Price_Repository();
         this.randomNumber = new RandomProduct(5);
-        this.product_DAO = new Product_Repository();
+        this.product_Repository = new Product_Repository();
     }
     /**
      * @returns {Promise<Array<DTO_InputData>>}
      */
     async updateService() {
-        let product_id_list = (await this.product_DAO.allProductId()).map(each => each.product_id);
-        let product_all_count = await this.product_DAO.allProductCount();
+        let product_id_list = (await this.product_Repository.allProductId()).map(each => each.product_id);
+        let product_all_count = await this.product_Repository.allProductCount();
         let randomProductId = this.randomNumber.randomProductIdList(product_id_list, product_all_count)
         /** @type {Array<DTO_InputData>} */
         let resultDTO_InputData = new Array()
         for(let productId of randomProductId){
             /**@type {DAO_Product_Price|null} */
-            const product = await this.product_price_DAO.findProductPriceRecent(productId)
+            const product = await this.product_price_Repository.findProductPriceRecent(productId)
             if (product != null) {
                 const updateProductPrice = product.price + 500
                 /**@type {DTO_RequestUpdateStreamProductPrice} */
