@@ -21,7 +21,8 @@
     - GitAction을 이용하여 CD 구축
     - 이미지
 - 원격 서버 환경
-    - 이미지
+    - ![Frame 24 (3)](https://user-images.githubusercontent.com/78067919/222954467-10eeb869-9b00-435e-b770-56a3db3e4a04.png)
+
 - 데이터베이스 엔터티 관계도
     - ![database_development](https://user-images.githubusercontent.com/78067919/222954490-d23610ec-4517-49b4-968e-93c60b521471.png)
 
