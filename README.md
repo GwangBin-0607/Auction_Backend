@@ -4,6 +4,8 @@
     - 2022.10 ~
 - 프로젝트 내용
     - 사용자의 물품을 실시간 경매를 통해 거래를 주선하는 플랫폼 개발
+- 기술 스택
+    - Node.js, Express, net, Sequelize, jest, supertest, docker, docker-compose, AWS EC2, RDS, Nginx
 - 프로젝트 구조
     - Backend
         - Http
