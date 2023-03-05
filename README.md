@@ -19,7 +19,8 @@
     - 로컬 환경에서 Http, Tcp, Nginx 개발 및 로컬 환경 도커 테스트
     - push to main branch
     - GitAction을 이용하여 CD 구축
-    - 이미지
+    - ![Frame 22 (3)](https://user-images.githubusercontent.com/78067919/222954478-3200ca05-6fc3-4d27-9acc-77b6b3a76efa.png)
+
 - 원격 서버 환경
     - ![Frame 24 (3)](https://user-images.githubusercontent.com/78067919/222954467-10eeb869-9b00-435e-b770-56a3db3e4a04.png)
 
