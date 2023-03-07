@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   Recipe.init({
     user_id: {
       primaryKey:true,
-      type:DataTypes.STRING
+      type:DataTypes.INTEGER
     },
     product_id:{
         primaryKey:true,

@@ -12,6 +12,7 @@ class UpdateStreamProductPriceService {
         this.product_price_Repository = new Product_Price_Repository();
         this.randomNumber = new RandomProduct(5);
         this.product_Repository = new Product_Repository();
+        this.user_id = 1
     }
     /**
      * @returns {Promise<Array<DTO_InputData>>}
@@ -28,7 +29,7 @@ class UpdateStreamProductPriceService {
             if (product != null) {
                 const updateProductPrice = product.price + 500
                 /**@type {DTO_RequestUpdateStreamProductPrice} */
-                const dto_updateProductPrice = new DTO_RequestUpdateStreamProductPrice(product.product_id, updateProductPrice);
+                const dto_updateProductPrice = new DTO_RequestUpdateStreamProductPrice(product.product_id, updateProductPrice,this.user_id);
                 resultDTO_InputData.push(new DTO_InputData(this.completionId, 2, dto_updateProductPrice));
             } 
         }

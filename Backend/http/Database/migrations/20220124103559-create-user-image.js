@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('User_Images', {
       user_id:{
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       image_id:{
         allowNull: false,

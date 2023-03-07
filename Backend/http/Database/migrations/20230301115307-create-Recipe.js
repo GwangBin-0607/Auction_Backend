@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('Recipes', {
       user_id: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         primaryKey:true
       },
       product_id:{

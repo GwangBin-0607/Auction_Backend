@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     product_name: DataTypes.STRING,
     product_price: DataTypes.INTEGER,
     registerTime:DataTypes.DATE,
-    comment:DataTypes.STRING
+    comment:DataTypes.STRING,
+    user_id:DataTypes.STRING
   }, {
     timestamps:false,
     sequelize,

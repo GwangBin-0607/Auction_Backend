@@ -1,18 +1,21 @@
 //@ts-check
 const {Product_UpDown_Repository} = require('../Repository//Product_UpDown');
 const {Product_Price_Repository} = require('../Repository/Product_Price');
+const {Recipe_Repository} = require('../Repository/Recipe');
 const {Product_Repository} = require('../Repository/Product');
 const { DTO_RequestUpdateStreamProductPrice } = require('../DTO/DTO_RequestUpdateStreamProductPrice');
 const { getToday } = require('../time');
 const {DTO_ResponseUpdateStreamProductPrice} = require('../DTO/DTO_ResponseUpdateStreamProductPrice');
 const {DAO_Product_Price} = require('../Repository/DAO/DAO_Product_Price')
-const {DTO_OutputStreamProductPrice} = require('../DTO/DTO_OutputStreamProductPrice')
+const {DTO_OutputStreamProductPrice} = require('../DTO/DTO_OutputStreamProductPrice');
+const { DTO_RequestInsertRecipe } = require('../DTO/DTO_RequestInsertRecipe');
 
 class StreamProductPriceUpdateService{
     constructor(){
         this.product_updown_dao = new Product_UpDown_Repository();
         this.product_price_dao = new Product_Price_Repository();
         this.product_dao = new Product_Repository();
+        this.recipe_repository = new Recipe_Repository();
     }
     /**
  * @param {DTO_RequestUpdateStreamProductPrice} streamProductPrice
@@ -22,7 +25,8 @@ class StreamProductPriceUpdateService{
 async productPriceUpdate(streamProductPrice) {
     try {
       let product = await this.product_price_dao.findProductPriceRecent(streamProductPrice.product_id);
-      if (product != null&&this.updatable(product.price, streamProductPrice.product_price)) {
+      let dto_recipe = new DTO_RequestInsertRecipe(streamProductPrice.user_id,streamProductPrice.product_id,streamProductPrice.product_price)
+      if (product != null&&this.updatable(product.price, streamProductPrice.product_price)&&await this.recipe_repository.insertOrUpdate(dto_recipe)) {
         let dto = new DAO_Product_Price(streamProductPrice.product_id,streamProductPrice.product_price,getToday());
         if (product?.auction_date == getToday()) {
           return await this.product_price_dao.updateProduct_Price(dto);
