@@ -15,7 +15,7 @@
 
 - Cilent - Server Architecture
     
-    ![Frame 24 (4).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7306637e-aa23-4fec-973c-d2110afda662/Frame_24_(4).png)
+    ![333](https://user-images.githubusercontent.com/78067919/224891473-39b76dc3-ec2a-4296-ab61-03adca74e270.png)
     
     - Nginx Container
         - 포트에 따라 HTTP Container, TCP/IP Socket Container로 프록시
@@ -40,7 +40,7 @@
 
 - `Database 구축`
     
-    ![database_development.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8f813762-36fa-4859-b13e-a67c2871ea63/database_development.png)
+   ![222](https://user-images.githubusercontent.com/78067919/224891463-0e708f3c-1403-4ab7-bce7-89f74b87c663.png)
     
 - `Express.js 활용 HTTP RESTful API`
     - 제품 리스트 (Post)
@@ -50,4 +50,4 @@
 - `GitAction For CI/CD`
     - Git Action Diagram
         
-        ![Frame 22 (3).png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/14e2af8e-0aa1-43e9-a8fb-835e61988cc5/Frame_22_(3).png)
+        ![111](https://user-images.githubusercontent.com/78067919/224891456-d3832e48-9c54-4381-8204-b417e48e6e0f.png)
